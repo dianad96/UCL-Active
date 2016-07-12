@@ -12,9 +12,9 @@ UCL will protect the anonymity of the contributors and will have oversight of th
 + Our vision is aligned with UCL 2034 to apply our scholarly knowledge to contribute to improving the sporting performance of amateurs and elites worldwide. 
 
 ## Project Architecture
-[image]
+![Architecture]
 
-[image]: http://i65.tinypic.com/i2j7sk.png
+[Architecture]: http://i65.tinypic.com/i2j7sk.png
 
 ---
 License under Apache License 2.0
