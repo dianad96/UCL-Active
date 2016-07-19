@@ -1,19 +1,17 @@
 //
-//  SecondViewController.swift
+//  TimerViewController.swift
 //  uclactive
 //
-//  Created by Diana Darie on 7/16/16.
+//  Created by Yonita Carter on 7/19/16.
 //  Copyright © 2016 Diana Darie. All rights reserved.
 //
-
 
 import UIKit
 import CoreLocation
 import HealthKit
 
-
-class SecondViewController: UIViewController, CLLocationManagerDelegate {
-
+class TimerViewController: UIViewController, CLLocationManagerDelegate {
+    
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
@@ -26,8 +24,10 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     var lastLocation: CLLocation!
     var distanceTraveled = 0.0
     
-    let healthManager: HealthKitManager = HealthKitManager()
+    let healthManager:HealthKitManager = HealthKitManager()
+    
     var height: HKQuantitySample?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +45,6 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         getHealthKitPermission()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
     func getHealthKitPermission() {
         
         // Seek authorization in HealthKitManager.swift.
@@ -57,7 +52,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
             if authorized {
                 
                 // Get and set the user's height.
-                self.setHeight()
+               // self.setHeight()
             } else {
                 if error != nil {
                     print(error)
@@ -66,58 +61,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-
-    @IBAction func startTimer(sender: AnyObject) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
-        zeroTime = NSDate.timeIntervalSinceReferenceDate()
-        
-        distanceTraveled = 0.0
-        startLocation = nil
-        lastLocation = nil
-        
-        locationManager.startUpdatingLocation()
-    }
-
-    @IBAction func stopTimer(sender: AnyObject) {
-        timer.invalidate()
-        locationManager.stopUpdatingLocation()
-    }
     
-    func updateTime() {
-        let currentTime = NSDate.timeIntervalSinceReferenceDate()
-        var timePassed: NSTimeInterval = currentTime - zeroTime
-        let minutes = UInt8(timePassed / 60.0)
-        timePassed -= (NSTimeInterval(minutes) * 60)
-        let seconds = UInt8(timePassed)
-        timePassed -= NSTimeInterval(seconds)
-        let millisecsX10 = UInt8(timePassed * 100)
-        
-        let strMinutes = String(format: "%02d", minutes)
-        let strSeconds = String(format: "%02d", seconds)
-        let strMSX10 = String(format: "%02d", millisecsX10)
-        
-        timerLabel.text = "\(strMinutes):\(strSeconds):\(strMSX10)"
-        
-        if timerLabel.text == "60:00:00" {
-            timer.invalidate()
-            locationManager.stopUpdatingLocation()
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if startLocation == nil {
-            startLocation = locations.first as CLLocation!
-        } else {
-            let lastDistance = lastLocation.distanceFromLocation(locations.last as CLLocation!)
-            distanceTraveled += lastDistance * 0.000621371
-            
-            let trimmedDistance = String(format: "%.2f", distanceTraveled)
-            
-            milesLabel.text = "\(trimmedDistance) Miles"
-        }
-        
-        lastLocation = locations.last as CLLocation!
-    }
     
     func setHeight() {
         // Create the HKSample for Height.
@@ -149,10 +93,4 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         })
         
     }
-
-    @IBAction func share(sender: AnyObject) {
-        healthManager.saveDistance(distanceTraveled, date: NSDate())
-    }
-    
 }
-
