@@ -18,6 +18,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
     
+    
     var zeroTime = NSTimeInterval()
     var timer : NSTimer = NSTimer()
     
@@ -31,6 +32,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         locationManager.requestWhenInUseAuthorization()
         

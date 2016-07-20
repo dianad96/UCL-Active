@@ -7,17 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD07BB401D3F69E60012850D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD07BB3F1D3F69E60012850D /* Assets.xcassets */; };
+		AD07BB461D3F77890012850D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB451D3F77890012850D /* ProfileController.swift */; };
+		AD07BB481D3FBEFC0012850D /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB471D3FBEFC0012850D /* AvatarImageView.swift */; };
+		AD2514C11D3E682F00D9D850 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2514C01D3E682F00D9D850 /* CustomView.swift */; };
+		AD2514C31D3E686500D9D850 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2514C21D3E686500D9D850 /* CustomButton.swift */; };
 		AD72CC5B1D3AC6D60054A10B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC5A1D3AC6D60054A10B /* AppDelegate.swift */; };
 		AD72CC5D1D3AC6D60054A10B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC5C1D3AC6D60054A10B /* FirstViewController.swift */; };
 		AD72CC5F1D3AC6D60054A10B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC5E1D3AC6D60054A10B /* SecondViewController.swift */; };
 		AD72CC621D3AC6D60054A10B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD72CC601D3AC6D60054A10B /* Main.storyboard */; };
-		AD72CC641D3AC6D60054A10B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD72CC631D3AC6D60054A10B /* Assets.xcassets */; };
 		AD72CC671D3AC6D70054A10B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD72CC651D3AC6D70054A10B /* LaunchScreen.storyboard */; };
 		AD72CC721D3AC6D70054A10B /* uclactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC711D3AC6D70054A10B /* uclactiveTests.swift */; };
 		AD72CC7D1D3AC6D70054A10B /* uclactiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC7C1D3AC6D70054A10B /* uclactiveUITests.swift */; };
 		AD72CC8C1D3AC6E90054A10B /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD72CC8B1D3AC6E90054A10B /* HomeKit.framework */; };
 		AD72CC8E1D3ACA150054A10B /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC8D1D3ACA150054A10B /* HealthKitManager.swift */; };
-		AD72CC911D3AD04E0054A10B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD72CC901D3AD04E0054A10B /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,12 +41,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD07BB3F1D3F69E60012850D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD07BB451D3F77890012850D /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		AD07BB471D3FBEFC0012850D /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		AD2514C01D3E682F00D9D850 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		AD2514C21D3E686500D9D850 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		AD72CC571D3AC6D60054A10B /* uclactive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uclactive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD72CC5A1D3AC6D60054A10B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD72CC5C1D3AC6D60054A10B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		AD72CC5E1D3AC6D60054A10B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AD72CC611D3AC6D60054A10B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AD72CC631D3AC6D60054A10B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD72CC661D3AC6D70054A10B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD72CC681D3AC6D70054A10B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD72CC6D1D3AC6D70054A10B /* uclactiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uclactiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +62,6 @@
 		AD72CC8A1D3AC6E90054A10B /* uclactive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = uclactive.entitlements; sourceTree = "<group>"; };
 		AD72CC8B1D3AC6E90054A10B /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		AD72CC8D1D3ACA150054A10B /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
-		AD72CC901D3AD04E0054A10B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +70,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD72CC8C1D3AC6E90054A10B /* HomeKit.framework in Frameworks */,
-				AD72CC911D3AD04E0054A10B /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,10 +90,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD2514BD1D3E5CF400D9D850 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD72CC5E1D3AC6D60054A10B /* SecondViewController.swift */,
+				AD72CC5C1D3AC6D60054A10B /* FirstViewController.swift */,
+				AD07BB451D3F77890012850D /* ProfileController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		AD2514BE1D3E5D1E00D9D850 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				AD72CC8D1D3ACA150054A10B /* HealthKitManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		AD2514BF1D3E681300D9D850 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AD2514C01D3E682F00D9D850 /* CustomView.swift */,
+				AD2514C21D3E686500D9D850 /* CustomButton.swift */,
+				AD07BB471D3FBEFC0012850D /* AvatarImageView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		AD72CC4E1D3AC6D60054A10B = {
 			isa = PBXGroup;
 			children = (
-				AD72CC901D3AD04E0054A10B /* HealthKit.framework */,
 				AD72CC8B1D3AC6E90054A10B /* HomeKit.framework */,
 				AD72CC591D3AC6D60054A10B /* uclactive */,
 				AD72CC701D3AC6D70054A10B /* uclactiveTests */,
@@ -110,15 +142,15 @@
 		AD72CC591D3AC6D60054A10B /* uclactive */ = {
 			isa = PBXGroup;
 			children = (
+				AD2514BF1D3E681300D9D850 /* Views */,
+				AD2514BE1D3E5D1E00D9D850 /* Manager */,
+				AD2514BD1D3E5CF400D9D850 /* Controllers */,
 				AD72CC8A1D3AC6E90054A10B /* uclactive.entitlements */,
 				AD72CC5A1D3AC6D60054A10B /* AppDelegate.swift */,
-				AD72CC5C1D3AC6D60054A10B /* FirstViewController.swift */,
-				AD72CC5E1D3AC6D60054A10B /* SecondViewController.swift */,
 				AD72CC601D3AC6D60054A10B /* Main.storyboard */,
-				AD72CC631D3AC6D60054A10B /* Assets.xcassets */,
 				AD72CC651D3AC6D70054A10B /* LaunchScreen.storyboard */,
 				AD72CC681D3AC6D70054A10B /* Info.plist */,
-				AD72CC8D1D3ACA150054A10B /* HealthKitManager.swift */,
+				AD07BB3F1D3F69E60012850D /* Assets.xcassets */,
 			);
 			path = uclactive;
 			sourceTree = "<group>";
@@ -255,7 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD72CC671D3AC6D70054A10B /* LaunchScreen.storyboard in Resources */,
-				AD72CC641D3AC6D60054A10B /* Assets.xcassets in Resources */,
+				AD07BB401D3F69E60012850D /* Assets.xcassets in Resources */,
 				AD72CC621D3AC6D60054A10B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,8 +313,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD07BB461D3F77890012850D /* ProfileController.swift in Sources */,
+				AD2514C11D3E682F00D9D850 /* CustomView.swift in Sources */,
 				AD72CC5F1D3AC6D60054A10B /* SecondViewController.swift in Sources */,
+				AD2514C31D3E686500D9D850 /* CustomButton.swift in Sources */,
 				AD72CC5B1D3AC6D60054A10B /* AppDelegate.swift in Sources */,
+				AD07BB481D3FBEFC0012850D /* AvatarImageView.swift in Sources */,
 				AD72CC8E1D3ACA150054A10B /* HealthKitManager.swift in Sources */,
 				AD72CC5D1D3AC6D60054A10B /* FirstViewController.swift in Sources */,
 			);
@@ -515,6 +551,7 @@
 				AD72CC831D3AC6D70054A10B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AD72CC841D3AC6D70054A10B /* Build configuration list for PBXNativeTarget "uclactiveTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +560,7 @@
 				AD72CC861D3AC6D70054A10B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AD72CC871D3AC6D70054A10B /* Build configuration list for PBXNativeTarget "uclactiveUITests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +569,7 @@
 				AD72CC891D3AC6D70054A10B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
