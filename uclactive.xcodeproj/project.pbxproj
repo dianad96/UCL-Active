@@ -44,6 +44,8 @@
 		AD07BB3F1D3F69E60012850D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD07BB451D3F77890012850D /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		AD07BB471D3FBEFC0012850D /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		AD07BB491D3FE9480012850D /* Twitter User Interface-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Twitter User Interface-Bridging-Header.h"; path = "../../../Downloads/Twitter-UI-master/Twitter User Interface/Twitter User Interface-Bridging-Header.h"; sourceTree = "<group>"; };
+		AD07BB4A1D3FE9710012850D /* FXBlurView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FXBlurView.h; path = "../../../Downloads/Twitter-UI-master/Twitter User Interface/FXBlurView.h"; sourceTree = "<group>"; };
 		AD2514C01D3E682F00D9D850 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		AD2514C21D3E686500D9D850 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		AD72CC571D3AC6D60054A10B /* uclactive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uclactive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +113,7 @@
 		AD2514BF1D3E681300D9D850 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AD07BB4A1D3FE9710012850D /* FXBlurView.h */,
 				AD2514C01D3E682F00D9D850 /* CustomView.swift */,
 				AD2514C21D3E686500D9D850 /* CustomButton.swift */,
 				AD07BB471D3FBEFC0012850D /* AvatarImageView.swift */,
@@ -151,6 +154,7 @@
 				AD72CC651D3AC6D70054A10B /* LaunchScreen.storyboard */,
 				AD72CC681D3AC6D70054A10B /* Info.plist */,
 				AD07BB3F1D3F69E60012850D /* Assets.xcassets */,
+				AD07BB491D3FE9480012850D /* Twitter User Interface-Bridging-Header.h */,
 			);
 			path = uclactive;
 			sourceTree = "<group>";
