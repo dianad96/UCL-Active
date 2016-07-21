@@ -18,6 +18,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var milesLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
     
+    let healthManager: HealthKitManager = HealthKitManager()
     
     var zeroTime = NSTimeInterval()
     var timer : NSTimer = NSTimer()
@@ -27,8 +28,6 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     var lastLocation: CLLocation!
     var distanceTraveled = 0.0
     
-    let healthManager: HealthKitManager = HealthKitManager()
-    var height: HKQuantitySample?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +42,6 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
             print("Need to Enable Location")
         }
         
-        // We cannot access the user's HealthKit data without specific permission.
-        getHealthKitPermission()
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,22 +49,6 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func getHealthKitPermission() {
-        
-        // Seek authorization in HealthKitManager.swift.
-        healthManager.authorizeHealthKit { (authorized,  error) -> Void in
-            if authorized {
-                
-                // Get and set the user's height.
-                self.setHeight()
-            } else {
-                if error != nil {
-                    print(error)
-                }
-                print("Permission denied.")
-            }
-        }
-    }
 
     @IBAction func startTimer(sender: AnyObject) {
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
@@ -120,37 +101,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         
         lastLocation = locations.last as CLLocation!
     }
-    
-    func setHeight() {
-        // Create the HKSample for Height.
-        let heightSample = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)
-        
-        // Call HealthKitManager's getSample() method to get the user's height.
-        self.healthManager.getHeight(heightSample!, completion: { (userHeight, error) -> Void in
-            
-            if( error != nil ) {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-            
-            var heightString = ""
-            
-            self.height = userHeight as? HKQuantitySample
-            
-            // The height is formatted to the user's locale.
-            if let meters = self.height?.quantity.doubleValueForUnit(HKUnit.meterUnit()) {
-                let formatHeight = NSLengthFormatter()
-                formatHeight.forPersonHeightUse = true
-                heightString = formatHeight.stringFromMeters(meters)
-            }
-            
-            // Set the label to reflect the user's height.
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.heightLabel.text = heightString
-            })
-        })
-        
-    }
+
 
     @IBAction func share(sender: AnyObject) {
         healthManager.saveDistance(distanceTraveled, date: NSDate())

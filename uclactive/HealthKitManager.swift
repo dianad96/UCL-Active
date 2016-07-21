@@ -15,7 +15,13 @@ class HealthKitManager: NSObject {
     func authorizeHealthKit(completion: ((success: Bool, error: NSError!) -> Void)!) {
         
         // State the health data type(s) we want to read from HealthKit.
-        let healthDataToRead = Set(arrayLiteral: HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!)
+        let healthDataToRead = Set(arrayLiteral:
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
+            HKObjectType.quantityTypeForIdentifier (HKQuantityTypeIdentifierBodyMass)!,
+            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex)!,
+            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBloodType)!,
+            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierFitzpatrickSkinType)!,
+            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth)!)
         
         // State the health data type(s) we want to write from HealthKit.
         let healthDataToWrite = Set(arrayLiteral: HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!)
@@ -33,35 +39,38 @@ class HealthKitManager: NSObject {
         }
     }
     
-    func getHeight(sampleType: HKSampleType , completion: ((HKSample!, NSError!) -> Void)!) {
+    
+    // Get User's Data
+    func getSample(sampleType: HKSampleType , completion: ((HKSample!, NSError!) -> Void)!) {
         
-        // Predicate for the height query
-        let distantPastHeight = NSDate.distantPast() as NSDate
+        // Predicate for the sample query
+        let distantPastSample = NSDate.distantPast() as NSDate
         let currentDate = NSDate()
-        let lastHeightPredicate = HKQuery.predicateForSamplesWithStartDate(distantPastHeight, endDate: currentDate, options: .None)
+        let lastSamplePredicate = HKQuery.predicateForSamplesWithStartDate(distantPastSample, endDate: currentDate, options: .None)
         
-        // Get the single most recent height
+        // Get the single most recent sample
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
         
-        // Query HealthKit for the last Height entry.
-        let heightQuery = HKSampleQuery(sampleType: sampleType, predicate: lastHeightPredicate, limit: 1, sortDescriptors: [sortDescriptor]) { (sampleQuery, results, error ) -> Void in
+        // Query HealthKit for the last Sample entry.
+        let sampleQuery = HKSampleQuery(sampleType: sampleType, predicate: lastSamplePredicate, limit: 1, sortDescriptors: [sortDescriptor]) { (sampleQuery, results, error ) -> Void in
             
             if let queryError = error {
                 completion(nil, queryError)
                 return
             }
             
-            // Set the first HKQuantitySample in results as the most recent height.
-            let lastHeight = results!.first
+            // Set the first HKQuantitySample in results as the most recent sample.
+            let lastSample = results!.first
             
             if completion != nil {
-                completion(lastHeight, nil)
+                completion(lastSample, nil)
             }
         }
-        
         // Time to execute the query.
-        self.healthKitStore.executeQuery(heightQuery)
+        self.healthKitStore.executeQuery(sampleQuery)
     }
+    
+
     
     func saveDistance(distanceRecorded: Double, date: NSDate ) {
         

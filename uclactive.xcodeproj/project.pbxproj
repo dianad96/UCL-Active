@@ -10,6 +10,7 @@
 		AD07BB401D3F69E60012850D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD07BB3F1D3F69E60012850D /* Assets.xcassets */; };
 		AD07BB461D3F77890012850D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB451D3F77890012850D /* ProfileController.swift */; };
 		AD07BB481D3FBEFC0012850D /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB471D3FBEFC0012850D /* AvatarImageView.swift */; };
+		AD07BB4E1D3FFF1D0012850D /* HealthKitContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB4D1D3FFF1D0012850D /* HealthKitContainer.swift */; };
 		AD2514C11D3E682F00D9D850 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2514C01D3E682F00D9D850 /* CustomView.swift */; };
 		AD2514C31D3E686500D9D850 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2514C21D3E686500D9D850 /* CustomButton.swift */; };
 		AD72CC5B1D3AC6D60054A10B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC5A1D3AC6D60054A10B /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 		AD07BB471D3FBEFC0012850D /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		AD07BB491D3FE9480012850D /* Twitter User Interface-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Twitter User Interface-Bridging-Header.h"; path = "../../../Downloads/Twitter-UI-master/Twitter User Interface/Twitter User Interface-Bridging-Header.h"; sourceTree = "<group>"; };
 		AD07BB4A1D3FE9710012850D /* FXBlurView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FXBlurView.h; path = "../../../Downloads/Twitter-UI-master/Twitter User Interface/FXBlurView.h"; sourceTree = "<group>"; };
+		AD07BB4D1D3FFF1D0012850D /* HealthKitContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitContainer.swift; sourceTree = "<group>"; };
 		AD2514C01D3E682F00D9D850 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		AD2514C21D3E686500D9D850 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		AD72CC571D3AC6D60054A10B /* uclactive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uclactive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD07BB4C1D3FFF010012850D /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				AD07BB4D1D3FFF1D0012850D /* HealthKitContainer.swift */,
+			);
+			name = Container;
+			sourceTree = "<group>";
+		};
 		AD2514BD1D3E5CF400D9D850 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +155,7 @@
 		AD72CC591D3AC6D60054A10B /* uclactive */ = {
 			isa = PBXGroup;
 			children = (
+				AD07BB4C1D3FFF010012850D /* Container */,
 				AD2514BF1D3E681300D9D850 /* Views */,
 				AD2514BE1D3E5D1E00D9D850 /* Manager */,
 				AD2514BD1D3E5CF400D9D850 /* Controllers */,
@@ -319,6 +330,7 @@
 			files = (
 				AD07BB461D3F77890012850D /* ProfileController.swift in Sources */,
 				AD2514C11D3E682F00D9D850 /* CustomView.swift in Sources */,
+				AD07BB4E1D3FFF1D0012850D /* HealthKitContainer.swift in Sources */,
 				AD72CC5F1D3AC6D60054A10B /* SecondViewController.swift in Sources */,
 				AD2514C31D3E686500D9D850 /* CustomButton.swift in Sources */,
 				AD72CC5B1D3AC6D60054A10B /* AppDelegate.swift in Sources */,

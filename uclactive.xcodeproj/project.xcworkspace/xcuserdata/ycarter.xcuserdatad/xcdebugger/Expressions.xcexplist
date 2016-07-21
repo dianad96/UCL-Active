@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ProfileController.(getWeight() -&gt; ()).(closure #1):ProfileController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "weightInKilograms">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProfileController.getBMI() -&gt; ():ProfileController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "weightInKilograms">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SecondViewController.(setBMI() -&gt; ()).(closure #1):SecondViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ProfileController.(setHeight() -&gt; ()).(closure #1):ProfileController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "heightInMeters">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
