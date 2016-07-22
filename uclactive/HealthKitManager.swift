@@ -17,7 +17,10 @@ class HealthKitManager: NSObject {
         // State the health data type(s) we want to read from HealthKit.
         let healthDataToRead = Set(arrayLiteral:
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
-            HKObjectType.quantityTypeForIdentifier (HKQuantityTypeIdentifierBodyMass)!,
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!,
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!,
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!,
+            
             HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex)!,
             HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBloodType)!,
             HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierFitzpatrickSkinType)!,

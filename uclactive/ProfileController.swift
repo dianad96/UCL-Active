@@ -24,6 +24,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     var height: HKQuantitySample?
     var bmi: HKQuantitySample?
     
+    
+    // Basic Info
     var heightValue = "Not enough data"
     var sexValue = "Not enough data"
     var bloodTypeValue = "Not enough data"
@@ -34,6 +36,11 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var heightInMeters: Double = 0.0
     var weightInKilograms: Double = 0.0
+    
+    //Fitness Data
+    var todayStepsValue: Double = 0.0
+    var averageStepsValue: Double = 0.0
+    var todayActiveEnergy: Double = 0.0
 
     //Outlet properties
     @IBOutlet weak var headerView: UIView!
@@ -76,6 +83,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
                 self.getSkinType()
                 self.getBirthdate()
                 self.getWeight()
+                self.getSteps()
+                self.getActiveEnergy()
             } else {
                 if error != nil {
                     print(error)
@@ -304,6 +313,88 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
+    /*
+     8. Get User's Active Energy
+     */
+    func getSteps () {
+        let endDate = NSDate()
+        let startDate = NSCalendar.currentCalendar().dateByAddingUnit(.Month, value: -1, toDate: endDate, options: [])
+        
+        let stepsSampleType = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: .None)
+        
+        print ("start date: ", startDate)
+        print ("end date: ", endDate)
+        
+        let query = HKSampleQuery(sampleType: stepsSampleType!, predicate: predicate, limit: 0, sortDescriptors: nil, resultsHandler: {
+            (query, results, error) in
+            if results == nil {
+                print("There was an error running the query: \(error)")
+            }
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                var dailyAVG:Double = 0.0
+                var i:Int = 0
+                var last:Double = 0.0
+                for steps in results as! [HKQuantitySample]
+                {
+                    dailyAVG += steps.quantity.doubleValueForUnit(HKUnit.countUnit())
+                    print(i, dailyAVG)
+                    i+=1
+                    last = steps.quantity.doubleValueForUnit(HKUnit.countUnit())
+                }
+                self.averageStepsValue = dailyAVG
+                self.todayStepsValue = last
+                
+                print("average: ", dailyAVG)
+                print("today's steps: ", last)
+                
+            }
+        })
+        self.healthKitStore.executeQuery(query)
+    }
+    
+
+    
+    /*
+     9. Get User's Active Energy
+     */
+    func getActiveEnergy () {
+        let endDate = NSDate()
+        let startDate = NSCalendar.currentCalendar().dateByAddingUnit(.Month, value: -1, toDate: endDate, options: [])
+        
+        let energySampleType = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: .None)
+        
+        print ("start date: ", startDate)
+        print ("end date: ", endDate)
+        
+        let query = HKSampleQuery(sampleType: energySampleType!, predicate: predicate, limit: 0, sortDescriptors: nil, resultsHandler: {
+            (query, results, error) in
+            if results == nil {
+                print("There was an error running the query: \(error)")
+            }
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                for activity in results as! [HKQuantitySample]
+                {
+                    self.todayActiveEnergy = activity.quantity.doubleValueForUnit(HKUnit.kilocalorieUnit())
+                    print(">>>>>", self.todayActiveEnergy)
+                }
+                
+            }
+        })
+        self.healthKitStore.executeQuery(query)
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
     override func viewDidAppear(animated: Bool) {
         
         // Header - Image
@@ -321,15 +412,11 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         headerView.insertSubview(headerBlurImageView, belowSubview: headerLabel)
         
         headerView.clipsToBounds = true
-
-
+        
+        
     }
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: Table view processing
     
@@ -341,7 +428,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         switch contentToDisplay {
         case .Performance:
-            return 3
+            return 10
             
         case .Details:
             return 10
@@ -354,34 +441,44 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         switch contentToDisplay {
         case .Performance:
-            cell.textLabel?.text = "Daily Steps"
+            let cellNr = indexPath.row
+            switch cellNr {
+                
+            case 1:
+                cell.textLabel?.text = "Daily Steps: " + String(self.todayStepsValue) + " steps"
+            case 2:
+                cell.textLabel?.text = "Average Steps: " + String(self.averageStepsValue) + " steps"
+            case 3:
+                cell.textLabel?.text = "Active Energy: " + String(self.todayActiveEnergy) + " kcal"
+                
+            default:
+                cell.textLabel?.text = " "
+            }
             
         case .Details:
             let cellNr = indexPath.row
             switch cellNr {
             case 0:
-                    cell.textLabel?.text = "Date of Birth: " + birthdateValue
+                cell.textLabel?.text = "Date of Birth: " + birthdateValue
             case 1:
-                    cell.textLabel?.text = "Sex: " + sexValue
+                cell.textLabel?.text = "Sex: " + sexValue
             case 2:
-                    cell.textLabel?.text = "Blood Type: " + bloodTypeValue
+                cell.textLabel?.text = "Blood Type: " + bloodTypeValue
             case 3:
-                    cell.textLabel?.text = "Skin Type: " + skinType
+                cell.textLabel?.text = "Skin Type: " + skinType
             case 5:
-                    cell.textLabel?.text = "Height: " + heightValue
+                cell.textLabel?.text = "Height: " + heightValue
             case 6:
-                    cell.textLabel?.text = "Weight: " + weightValue
+                cell.textLabel?.text = "Weight: " + weightValue
             case 7:
-                    cell.textLabel?.text = "BMI: " + bmiValue
+                cell.textLabel?.text = "BMI: " + bmiValue
             default:
-                    cell.textLabel?.text = " "
+                cell.textLabel?.text = " "
             }
         }
         return cell
     }
-    
-    
-    
+  
     @IBAction func selectContentType(sender: AnyObject) {
         if sender.selectedSegmentIndex == 0 {
             contentToDisplay = .Performance

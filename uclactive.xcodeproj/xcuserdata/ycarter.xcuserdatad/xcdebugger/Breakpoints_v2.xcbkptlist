@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411">
+            startingLineNumber = "508"
+            endingLineNumber = "508">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -40,27 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
+            startingLineNumber = "481"
+            endingLineNumber = "481"
             landmarkName = "selectContentType(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -71,44 +55,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "uclactive/HealthKitManager.swift"
-            timestampString = "490801866.518298"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "getSample(_:completion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -120,27 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "getWeight()"
             landmarkType = "5">
          </BreakpointContent>
@@ -152,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "setHeight()"
             landmarkType = "5">
          </BreakpointContent>
@@ -168,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "setHeight()"
             landmarkType = "5">
             <Locations>
@@ -216,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "setHeight()"
             landmarkType = "5">
             <Locations>
@@ -264,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "getWeight()"
             landmarkType = "5">
             <Locations>
@@ -312,11 +248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "getWeight()"
             landmarkType = "5">
             <Locations>
@@ -356,31 +292,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
             landmarkName = "getBMI()"
             landmarkType = "5">
          </BreakpointContent>
@@ -392,11 +312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "getBMI()"
             landmarkType = "5">
          </BreakpointContent>
@@ -408,11 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809436.068976"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
             landmarkName = "getBMI()"
             landmarkType = "5">
          </BreakpointContent>
@@ -424,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "490809344.463896"
+            timestampString = "490866754.226986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "ProfileController"
             landmarkType = "3">
             <Locations>

@@ -1,5 +1,10 @@
 # UCL-Active
 
+[![Platform](http://img.shields.io/badge/platform-ios-blue.svg?style=flat
+             )](https://developer.apple.com/iphone/index.action)
+[![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
+             )](https://developer.apple.com/swift)
+
 ## The Project
 The purpose of the project is to develop a UCL data store, to aggregate and manage fitness and lifestyle data submitted by UCL staff and students.
 UCL will protect the anonymity of the contributors and will have oversight of the ways in which this growing data set will be used to further research in digital health analytics.
