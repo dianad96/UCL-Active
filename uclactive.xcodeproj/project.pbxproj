@@ -23,6 +23,7 @@
 		AD72CC7D1D3AC6D70054A10B /* uclactiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC7C1D3AC6D70054A10B /* uclactiveUITests.swift */; };
 		AD72CC8C1D3AC6E90054A10B /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD72CC8B1D3AC6E90054A10B /* HomeKit.framework */; };
 		AD72CC8E1D3ACA150054A10B /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC8D1D3ACA150054A10B /* HealthKitManager.swift */; };
+		AD7F73651D44D920002F5369 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7F73641D44D920002F5369 /* DetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		AD72CC8A1D3AC6E90054A10B /* uclactive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = uclactive.entitlements; sourceTree = "<group>"; };
 		AD72CC8B1D3AC6E90054A10B /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		AD72CC8D1D3ACA150054A10B /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		AD7F73641D44D920002F5369 /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				AD72CC5C1D3AC6D60054A10B /* FirstViewController.swift */,
 				AD07BB451D3F77890012850D /* ProfileController.swift */,
 				AD07BB5A1D44C0B10012850D /* DetailsController.swift */,
+				AD7F73641D44D920002F5369 /* DetailController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				AD07BB461D3F77890012850D /* ProfileController.swift in Sources */,
 				AD2514C11D3E682F00D9D850 /* CustomView.swift in Sources */,
+				AD7F73651D44D920002F5369 /* DetailController.swift in Sources */,
 				AD07BB5B1D44C0B10012850D /* DetailsController.swift in Sources */,
 				AD07BB4E1D3FFF1D0012850D /* HealthKitContainer.swift in Sources */,
 				AD72CC5F1D3AC6D60054A10B /* SecondViewController.swift in Sources */,

@@ -289,14 +289,6 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="award" translatesAutoresizingMaskIntoConstraints="NO" id="tHB-nr-LQo">
                                             <rect key="frame" x="266" y="8" width="46" height="43"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bg2-Ej-WAd">
-                                            <rect key="frame" x="212" y="15" width="46" height="30"/>
-                                            <state key="normal" title="Button"/>
-                                            <connections>
-                                                <action selector="perform:" destination="jog-dl-Jcm" eventType="touchUpInside" id="Xpa-Qf-WIY"/>
-                                                <segue destination="max-kB-Xxk" kind="custom" identifier="detailsController" customClass="DetailsController" customModule="uclactive" customModuleProvider="target" id="ttU-0o-wPK"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -342,10 +334,10 @@
             </objects>
             <point key="canvasLocation" x="1328" y="215"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Controller-->
         <scene sceneID="kmG-Eo-OdU">
             <objects>
-                <viewController id="max-kB-Xxk" sceneMemberID="viewController">
+                <viewController id="max-kB-Xxk" customClass="DetailController" customModule="uclactive" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wIy-ih-Vzd"/>
                         <viewControllerLayoutGuide type="bottom" id="2tE-nW-w9u"/>
@@ -363,6 +355,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="label" destination="6xF-31-d4V" id="YS2-NU-iuT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWC-bg-pPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -439,8 +434,5 @@
         <image name="walle" width="106" height="104"/>
         <image name="well_ballIcon" width="190" height="283"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="dLk-nH-e5T"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.40222668684293156" green="0.78807975113122175" blue="0.47145898393781743" alpha="1" colorSpace="calibratedRGB"/>
 </document>

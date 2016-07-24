@@ -26,9 +26,6 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     let healthKitStore:HKHealthStore = HKHealthStore()
 
-    @IBAction func perform(sender: AnyObject) {
-        self.performSegueWithIdentifier("detailsController", sender:self)
-    }
     let healthManager: HealthKitManager = HealthKitManager()
     var height: HKQuantitySample?
     var bmi: HKQuantitySample?
@@ -459,7 +456,9 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
        // if segue.identifier == "detailsController" {
             print("WHY AM I HERE?")
-            
+        var secondVC: DetailController = segue.destinationViewController as! DetailController
+        secondVC.received = todayStepsValue
+        
        // }
     }
     
