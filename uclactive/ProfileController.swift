@@ -9,6 +9,12 @@
 import UIKit
 import HealthKit
 
+struct Recipe {
+    var name: String
+    let thumbnails: String
+    let prepTime: String
+}
+
 let offset_HeaderStop:CGFloat = 40.0 // At this offset the Header stops its transformations
 let distance_W_LabelHeader:CGFloat = 30.0 // The distance between the top of the screen and the top of the White Label
 
@@ -20,6 +26,9 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     let healthKitStore:HKHealthStore = HKHealthStore()
 
+    @IBAction func perform(sender: AnyObject) {
+        self.performSegueWithIdentifier("detailsController", sender:self)
+    }
     let healthManager: HealthKitManager = HealthKitManager()
     var height: HKQuantitySample?
     var bmi: HKQuantitySample?
@@ -435,6 +444,26 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
     }
+    
+    //MARK: - UITableView Delegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("HEREEE")
+        print(indexPath)
+        print(self.tableView!.indexPathForSelectedRow)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.performSegueWithIdentifier("detailsController", sender:self)
+        
+    }
+    
+    // MARK: Segue Method
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       // if segue.identifier == "detailsController" {
+            print("WHY AM I HERE?")
+            
+       // }
+    }
+    
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()

@@ -11,6 +11,7 @@
 		AD07BB461D3F77890012850D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB451D3F77890012850D /* ProfileController.swift */; };
 		AD07BB481D3FBEFC0012850D /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB471D3FBEFC0012850D /* AvatarImageView.swift */; };
 		AD07BB4E1D3FFF1D0012850D /* HealthKitContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB4D1D3FFF1D0012850D /* HealthKitContainer.swift */; };
+		AD07BB5B1D44C0B10012850D /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB5A1D44C0B10012850D /* DetailsController.swift */; };
 		AD2514C11D3E682F00D9D850 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2514C01D3E682F00D9D850 /* CustomView.swift */; };
 		AD2514C31D3E686500D9D850 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2514C21D3E686500D9D850 /* CustomButton.swift */; };
 		AD72CC5B1D3AC6D60054A10B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC5A1D3AC6D60054A10B /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		AD07BB491D3FE9480012850D /* Twitter User Interface-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Twitter User Interface-Bridging-Header.h"; path = "../../../Downloads/Twitter-UI-master/Twitter User Interface/Twitter User Interface-Bridging-Header.h"; sourceTree = "<group>"; };
 		AD07BB4A1D3FE9710012850D /* FXBlurView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FXBlurView.h; path = "../../../Downloads/Twitter-UI-master/Twitter User Interface/FXBlurView.h"; sourceTree = "<group>"; };
 		AD07BB4D1D3FFF1D0012850D /* HealthKitContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitContainer.swift; sourceTree = "<group>"; };
+		AD07BB5A1D44C0B10012850D /* DetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
 		AD2514C01D3E682F00D9D850 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		AD2514C21D3E686500D9D850 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		AD72CC571D3AC6D60054A10B /* uclactive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uclactive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +110,7 @@
 				AD72CC5E1D3AC6D60054A10B /* SecondViewController.swift */,
 				AD72CC5C1D3AC6D60054A10B /* FirstViewController.swift */,
 				AD07BB451D3F77890012850D /* ProfileController.swift */,
+				AD07BB5A1D44C0B10012850D /* DetailsController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			files = (
 				AD07BB461D3F77890012850D /* ProfileController.swift in Sources */,
 				AD2514C11D3E682F00D9D850 /* CustomView.swift in Sources */,
+				AD07BB5B1D44C0B10012850D /* DetailsController.swift in Sources */,
 				AD07BB4E1D3FFF1D0012850D /* HealthKitContainer.swift in Sources */,
 				AD72CC5F1D3AC6D60054A10B /* SecondViewController.swift in Sources */,
 				AD2514C31D3E686500D9D850 /* CustomButton.swift in Sources */,

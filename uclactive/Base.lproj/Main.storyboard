@@ -175,12 +175,6 @@
                                     <action selector="share:" destination="wJW-WM-eQf" eventType="touchUpInside" id="a7T-C5-aj7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIG-j1-pr8">
-                                <rect key="frame" x="0.0" y="352" width="320" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -204,7 +198,6 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="heightLabel" destination="CIG-j1-pr8" id="IFS-uo-ajB"/>
                         <outlet property="milesLabel" destination="oKd-Mh-cHP" id="hQJ-o3-Mz5"/>
                         <outlet property="timerLabel" destination="S9m-7r-dfi" id="svl-ho-BQS"/>
                     </connections>
@@ -296,6 +289,14 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="award" translatesAutoresizingMaskIntoConstraints="NO" id="tHB-nr-LQo">
                                             <rect key="frame" x="266" y="8" width="46" height="43"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bg2-Ej-WAd">
+                                            <rect key="frame" x="212" y="15" width="46" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="perform:" destination="jog-dl-Jcm" eventType="touchUpInside" id="Xpa-Qf-WIY"/>
+                                                <segue destination="max-kB-Xxk" kind="custom" identifier="detailsController" customClass="DetailsController" customModule="uclactive" customModuleProvider="target" id="ttU-0o-wPK"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -334,11 +335,38 @@
                         <outlet property="profileView" destination="a9w-HH-lcD" id="lIh-ue-tHs"/>
                         <outlet property="segmentedView" destination="GcZ-aV-DmV" id="2Om-ff-tjo"/>
                         <outlet property="tableView" destination="wgF-1s-VZz" id="CZH-xI-CM4"/>
+                        <segue destination="max-kB-Xxk" kind="custom" identifier="detailsController" customClass="DetailsController" customModule="uclactive" customModuleProvider="target" id="dLk-nH-e5T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtf-hq-n1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1328" y="215"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kmG-Eo-OdU">
+            <objects>
+                <viewController id="max-kB-Xxk" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wIy-ih-Vzd"/>
+                        <viewControllerLayoutGuide type="bottom" id="2tE-nW-w9u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JXw-T5-dik">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xF-31-d4V">
+                                <rect key="frame" x="139" y="273" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qWC-bg-pPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1328" y="1072"/>
         </scene>
         <!--Sync-->
         <scene sceneID="nFj-Dn-EmS">
@@ -411,5 +439,8 @@
         <image name="walle" width="106" height="104"/>
         <image name="well_ballIcon" width="190" height="283"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dLk-nH-e5T"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.40222668684293156" green="0.78807975113122175" blue="0.47145898393781743" alpha="1" colorSpace="calibratedRGB"/>
 </document>

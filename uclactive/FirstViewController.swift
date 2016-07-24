@@ -15,13 +15,7 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var button2: UIButton!
     
-    @IBOutlet weak var heightLabel: UILabel!
-    
-    
     let healthManager:HealthKitManager = HealthKitManager()
-    
-    var height: HKQuantitySample?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
