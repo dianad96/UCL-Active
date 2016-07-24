@@ -14,6 +14,7 @@ import QuartzCore
 class DetailController: UIViewController, LineChartDelegate{
     
 
+    @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var navBar: UINavigationBar!
     
     var rowPressed: Int = 0
@@ -24,6 +25,8 @@ class DetailController: UIViewController, LineChartDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        label2.text = String (received)
+
         
         switch  rowPressed {
             
