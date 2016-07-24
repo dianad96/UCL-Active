@@ -35,7 +35,7 @@ class DetailController: UIViewController, LineChartDelegate{
             navBar.topItem?.title = "Daily Steps"
             var views: [String: AnyObject] = [:]
             
-            label.text = "..."
+            label.text = ""
             label.translatesAutoresizingMaskIntoConstraints = false
             label.textAlignment = NSTextAlignment.Center
             self.view.addSubview(label)
@@ -112,4 +112,10 @@ class DetailController: UIViewController, LineChartDelegate{
             chart.setNeedsDisplay()
         }
     }
+    
+    @IBAction func back(sender: AnyObject) {
+        self.performSegueWithIdentifier("back", sender:self)
+    }
+    
+    
 }
