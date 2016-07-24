@@ -30,6 +30,9 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     var height: HKQuantitySample?
     var bmi: HKQuantitySample?
     
+    //TableView
+    var pressed: Int = 0
+    
     
     // Basic Info
     var heightValue = "Not enough data"
@@ -447,6 +450,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         print("HEREEE")
         print(indexPath)
         print(self.tableView!.indexPathForSelectedRow)
+        self.pressed = indexPath.row
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("detailsController", sender:self)
         
@@ -458,6 +462,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             print("WHY AM I HERE?")
         var secondVC: DetailController = segue.destinationViewController as! DetailController
         secondVC.received = todayStepsValue
+        secondVC.rowPressed = pressed
         
        // }
     }
