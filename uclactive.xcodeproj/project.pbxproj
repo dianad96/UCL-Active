@@ -24,6 +24,7 @@
 		AD72CC8C1D3AC6E90054A10B /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD72CC8B1D3AC6E90054A10B /* HomeKit.framework */; };
 		AD72CC8E1D3ACA150054A10B /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC8D1D3ACA150054A10B /* HealthKitManager.swift */; };
 		AD7F73651D44D920002F5369 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7F73641D44D920002F5369 /* DetailController.swift */; };
+		AD7F73711D44F755002F5369 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7F73701D44F755002F5369 /* LineChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		AD72CC8B1D3AC6E90054A10B /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		AD72CC8D1D3ACA150054A10B /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		AD7F73641D44D920002F5369 /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
+		AD7F73701D44F755002F5369 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineChart.swift; path = "../../../Downloads/swift-linechart-master/linechart/LineChart.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		AD72CC591D3AC6D60054A10B /* uclactive */ = {
 			isa = PBXGroup;
 			children = (
+				AD7F736F1D44F749002F5369 /* Utilities */,
 				AD07BB4C1D3FFF010012850D /* Container */,
 				AD2514BF1D3E681300D9D850 /* Views */,
 				AD2514BE1D3E5D1E00D9D850 /* Manager */,
@@ -192,6 +195,14 @@
 				AD72CC7E1D3AC6D70054A10B /* Info.plist */,
 			);
 			path = uclactiveUITests;
+			sourceTree = "<group>";
+		};
+		AD7F736F1D44F749002F5369 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AD7F73701D44F755002F5369 /* LineChart.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +353,7 @@
 				AD72CC5F1D3AC6D60054A10B /* SecondViewController.swift in Sources */,
 				AD2514C31D3E686500D9D850 /* CustomButton.swift in Sources */,
 				AD72CC5B1D3AC6D60054A10B /* AppDelegate.swift in Sources */,
+				AD7F73711D44F755002F5369 /* LineChart.swift in Sources */,
 				AD07BB481D3FBEFC0012850D /* AvatarImageView.swift in Sources */,
 				AD72CC8E1D3ACA150054A10B /* HealthKitManager.swift in Sources */,
 				AD72CC5D1D3AC6D60054A10B /* FirstViewController.swift in Sources */,

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "491054201.577181"
+            timestampString = "491058754.106715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "556"
-            endingLineNumber = "556">
+            startingLineNumber = "555"
+            endingLineNumber = "555">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -152,7 +152,7 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/ProfileController.swift"
-                  timestampString = "491053871.838843"
+                  timestampString = "491058789.97154"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "126"
@@ -167,7 +167,7 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/ProfileController.swift"
-                  timestampString = "491053871.839061"
+                  timestampString = "491058789.971805"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "126"
@@ -248,7 +248,7 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/ProfileController.swift"
-                  timestampString = "491053871.840212"
+                  timestampString = "491058789.973836"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "301"
@@ -263,7 +263,7 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/ProfileController.swift"
-                  timestampString = "491053871.840364"
+                  timestampString = "491058789.974091"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "301"
@@ -406,11 +406,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/ProfileController.swift"
-            timestampString = "491054201.577181"
+            timestampString = "491058754.106715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
+            startingLineNumber = "513"
+            endingLineNumber = "513"
             landmarkName = "selectContentType(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -422,11 +422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/DetailController.swift"
-            timestampString = "491051507.785672"
+            timestampString = "491059100.098062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "DetailController"
             landmarkType = "3">
             <Locations>
@@ -438,7 +438,7 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/DetailController.swift"
-                  timestampString = "491053871.84431"
+                  timestampString = "491058789.986765"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -453,12 +453,12 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/DetailController.swift"
-                  timestampString = "491053871.844469"
+                  timestampString = "491058789.987326"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "76">
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "68">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -468,90 +468,12 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/DetailController.swift"
-                  timestampString = "491053871.844595"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uclactive/DetailController.swift"
-            timestampString = "491054299.549897"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "DetailController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "uclactive.DetailController.received.getter : Swift.String"
-                  moduleName = "uclactive"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/DetailController.swift"
-                  timestampString = "491053871.846054"
+                  timestampString = "491058789.987733"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
                   endingLineNumber = "17"
-                  offsetFromSymbolStart = "60">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "uclactive.DetailController.received.setter : Swift.String"
-                  moduleName = "uclactive"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/DetailController.swift"
-                  timestampString = "491053871.846194"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "uclactive.DetailController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; uclactive.DetailController"
-                  moduleName = "uclactive"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/DetailController.swift"
-                  timestampString = "491053871.846313"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "140">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "uclactive.DetailController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;uclactive.DetailController&gt;"
-                  moduleName = "uclactive"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ycarter/Desktop/UCL-Active/uclactive/DetailController.swift"
-                  timestampString = "491053871.846429"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "80">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
