@@ -50,6 +50,11 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     var todayStepsValue: Double = 0.0
     var averageStepsValue: Double = 0.0
     var todayActiveEnergy: Double = 0.0
+    
+    //Steps
+    var day1 = 0.0, day2 = 0.0, day3 = 0.0, day4 = 0.0, day5 = 0.0, day6 = 0.0, day7 = 0.0
+    var day8 = 0.0, day9 = 0.0, day10 = 0.0, day11 = 0.0, day12 = 0.0, day13 = 0.0, day14 = 0.0
+
 
     //Outlet properties
     @IBOutlet weak var headerView: UIView!
@@ -323,7 +328,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     /*
-     8. Get User's Active Energy
+     8. Get User's Daily Steps
      */
     func getSteps () {
         let endDate = NSDate()

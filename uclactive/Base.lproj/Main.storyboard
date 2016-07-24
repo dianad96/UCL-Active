@@ -346,12 +346,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hq-I8-k8M">
-                                <rect key="frame" x="131" y="370" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uTj-3V-cix">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <items>
@@ -365,21 +359,30 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="o0A-jZ-DMY">
+                                <rect key="frame" x="20" y="315" width="280" height="189"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="o0A-jZ-DMY" firstAttribute="leading" secondItem="JXw-T5-dik" secondAttribute="leadingMargin" id="Mbo-ca-E8p"/>
                             <constraint firstItem="uTj-3V-cix" firstAttribute="leading" secondItem="JXw-T5-dik" secondAttribute="leadingMargin" constant="-20" id="Oor-Ze-8Kj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uTj-3V-cix" secondAttribute="trailing" constant="-20" id="PqM-1C-8jh"/>
+                            <constraint firstItem="o0A-jZ-DMY" firstAttribute="trailing" secondItem="JXw-T5-dik" secondAttribute="trailingMargin" id="aBy-I0-kwG"/>
+                            <constraint firstItem="2tE-nW-w9u" firstAttribute="top" secondItem="o0A-jZ-DMY" secondAttribute="bottom" constant="64" id="grl-MW-Nsr"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="label2" destination="5hq-I8-k8M" id="o4x-QU-cgu"/>
                         <outlet property="navBar" destination="uTj-3V-cix" id="Ies-fu-txC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWC-bg-pPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056" y="132"/>
+            <point key="canvasLocation" x="1328" y="940"/>
         </scene>
         <!--Sync-->
         <scene sceneID="nFj-Dn-EmS">

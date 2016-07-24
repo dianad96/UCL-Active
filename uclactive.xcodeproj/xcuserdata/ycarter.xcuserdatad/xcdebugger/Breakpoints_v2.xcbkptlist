@@ -516,11 +516,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uclactive/DetailController.swift"
-            timestampString = "491065526.410706"
+            timestampString = "491069087.573812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "didSelectDataPoint(_:yValues:)"
             landmarkType = "5">
          </BreakpointContent>
