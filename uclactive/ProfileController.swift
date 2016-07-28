@@ -30,18 +30,21 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     var height: HKQuantitySample?
     var bmi: HKQuantitySample?
     
+    // Errors
+    var errorApigee: Int = 0
+    
     //TableView
     var pressed: Int = 0
     
     
     // Basic Info
-    var heightValue = "Not enough data"
-    var sexValue = "Not enough data"
-    var bloodTypeValue = "Not enough data"
-    var skinType = "Not enough data"
-    var birthdateValue = "Not enough data"
-    var weightValue = "Not enough data"
-    var bmiValue = "Not enough data"
+    var heightValue = "Not enough data/Unauthorized"
+    var sexValue = "Not enough data/Unauthorized"
+    var bloodTypeValue = "Not enough data/Unauthorized"
+    var skinType = "Not enough data/Unauthorized"
+    var birthdateValue = "Not enough data/Unauthorized"
+    var weightValue = "Not enough data/Unauthorized"
+    var bmiValue = "Not enough data/Unauthorized"
     
     var heightInMeters: Double = 0.0
     var weightInKilograms: Double = 0.0
@@ -74,10 +77,82 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.dataSource=self
         
         
-        // We cannot access the user's HealthKit data without specific permission.
-        getHealthKitPermission()
+        // Authorize the UCLActive app against Apigee Health APIx before allowing it to get permission from other apps
+            print ("AUTHORIZING APIGEE!!!")
+            authorizeApigee()
+            print ("APIGEE AUTHORIZED!")
+        
+        if (self.errorApigee == 0)
+        {
+            // We cannot access the user's HealthKit data without specific permission.
+            print ("AUTHORIZING HEALTHKIT!!")
+            getHealthKitPermission()
+            print ("HEALTHKIT AUTORIZED!")
+        }
         
     }
+    
+    // Authenticating app with Apigee Health APIx
+    func authorizeApigee(){
+        // Send HTTP GET Request
+        
+        
+        let scriptUrl = "https://fhirsandbox-prod.apigee.net/oauth/v2"
+        let urlWithParams = scriptUrl + "/accesstoken?grant_type=client_credentials"
+        let myUrl = NSURL(string: urlWithParams);
+        
+        let request = NSMutableURLRequest(URL:myUrl!);
+        request.HTTPMethod = "POST"
+        
+        // Add Basic Authorization
+        
+        let username = "IEEQfngfhr6fP9aO35VUDhWEst8C2Ymw"
+        let password = "mjaPOgO0cLicfAHY"
+        let loginString = NSString(format: "%@:%@", username, password)
+        let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64LoginString = loginData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
+        request.setValue(base64LoginString, forHTTPHeaderField: "Authorization")
+        
+        
+        // Or add Token value
+        //request.addValue("Token token=884288bae150b9f2f68d8dc3a932071d", forHTTPHeaderField: "Authorization")
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            // Check for error
+            if error != nil
+            {
+                self.errorApigee = 1
+                print("error=\(error)")
+                return
+            }
+            
+            // Print out response string
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+            
+            /*
+             // Convert server json response to NSDictionary
+             do {
+             if let convertedJsonIntoDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+             
+             // Print out dictionary
+             print(convertedJsonIntoDict)
+             
+             let firstNameValue = convertedJsonIntoDict["userName"] as? String
+             print(firstNameValue!)
+             
+             }
+             } catch let error as NSError {
+             print(error.localizedDescription)
+             }
+             */
+        }
+        
+        task.resume()
+    }
+
     
     func getHealthKitPermission() {
         
@@ -323,7 +398,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     /*
-     8. Get User's Active Energy
+     8. Get User's Steps
      */
     func getSteps () {
         let endDate = NSDate()

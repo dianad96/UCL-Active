@@ -22,6 +22,14 @@
          contextName = "SecondViewController.(setBMI() -&gt; ()).(closure #1):SecondViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "ProfileController.viewDidLoad() -&gt; ():ProfileController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.errorApigee">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ProfileController.(setHeight() -&gt; ()).(closure #1):ProfileController.swift">
          <PersistentStrings>
             <PersistentString
