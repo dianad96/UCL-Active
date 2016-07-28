@@ -78,22 +78,22 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
         // Authorize the UCLActive app against Apigee Health APIx before allowing it to get permission from other apps
-            print ("AUTHORIZING APIGEE!!!")
-            authorizeApigee()
-            print ("APIGEE AUTHORIZED!")
-        
-        if (self.errorApigee == 0)
-        {
-            // We cannot access the user's HealthKit data without specific permission.
-            print ("AUTHORIZING HEALTHKIT!!")
-            getHealthKitPermission()
-            print ("HEALTHKIT AUTORIZED!")
+        self.authorizeApigee() { (result) -> () in
+            if result == 1 {
+                print ("APIGEE AUTHORIZED!")
+                // We cannot access the user's HealthKit data without specific permission.
+                print ("AUTHORIZING HEALTHKIT!!")
+                self.getHealthKitPermission()
+                print ("HEALTHKIT AUTORIZED!")
+            } else {
+                print ("APIGEE UNAUTHORIZED!")
+            }
         }
         
     }
     
     // Authenticating app with Apigee Health APIx
-    func authorizeApigee(){
+    func authorizeApigee(completion: (Int) -> ()){
         // Send HTTP GET Request
         
         
@@ -123,6 +123,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             // Check for error
             if error != nil
             {
+                completion(0)
                 self.errorApigee = 1
                 print("error=\(error)")
                 return
@@ -131,6 +132,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             // Print out response string
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             print("responseString = \(responseString)")
+            completion(1)
             
             /*
              // Convert server json response to NSDictionary
