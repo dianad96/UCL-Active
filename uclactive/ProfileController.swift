@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import Foundation
 
 struct Recipe {
     var name: String
@@ -29,6 +30,10 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     let healthManager: HealthKitManager = HealthKitManager()
     var height: HKQuantitySample?
     var bmi: HKQuantitySample?
+    
+    //Credentials
+    var apigeeKey: String = ""
+    var apigeeSecret: String = ""
     
     // Errors
     var errorApigee: Int = 0
@@ -76,10 +81,12 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.delegate=self
         tableView.dataSource=self
         
-        
+        readConfig()
         // Authorize the UCLActive app against Apigee Health APIx before allowing it to get permission from other apps
         self.authorizeApigee() { (result) -> () in
+            print ("AUTHORIZING APIGEE!")
             if result == 1 {
+                
                 print ("APIGEE AUTHORIZED!")
                 // We cannot access the user's HealthKit data without specific permission.
                 print ("AUTHORIZING HEALTHKIT!!")
@@ -92,11 +99,30 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
     }
     
+    // Read property/configuration file for the credentials
+    func readConfig () {
+        
+        var format = NSPropertyListFormat.XMLFormat_v1_0 //format of the property list
+        var plistData:[String:AnyObject] = [:]  //our data
+        let plistPath:String? = NSBundle.mainBundle().pathForResource("Property List", ofType: "plist")! //the path of the data
+        let plistXML = NSFileManager.defaultManager().contentsAtPath(plistPath!)! //the data in XML format
+        do{ //convert the data to a dictionary and handle errors.
+            plistData = try NSPropertyListSerialization.propertyListWithData(plistXML,options: .MutableContainersAndLeaves,format: &format)as! [String:AnyObject]
+            
+            self.apigeeKey = plistData["ApigeeKey"] as! String
+            self.apigeeSecret = plistData["ApigeeSecret"] as! String
+            print (self.apigeeKey)
+            print(self.apigeeSecret)
+        }
+        catch{ // error condition
+            print("Error reading plist: \(error), format: \(format)")
+        }
+    }
+    
     // Authenticating app with Apigee Health APIx
     func authorizeApigee(completion: (Int) -> ()){
         // Send HTTP GET Request
-        
-        
+    
         let scriptUrl = "https://fhirsandbox-prod.apigee.net/oauth/v2"
         let urlWithParams = scriptUrl + "/accesstoken?grant_type=client_credentials"
         let myUrl = NSURL(string: urlWithParams);
@@ -106,8 +132,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         // Add Basic Authorization
         
-        let username = "IEEQfngfhr6fP9aO35VUDhWEst8C2Ymw"
-        let password = "mjaPOgO0cLicfAHY"
+        let username = self.apigeeKey
+        let password = self.apigeeSecret
         let loginString = NSString(format: "%@:%@", username, password)
         let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
         let base64LoginString = loginData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
@@ -132,24 +158,10 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             // Print out response string
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             print("responseString = \(responseString)")
-            completion(1)
-            
-            /*
-             // Convert server json response to NSDictionary
-             do {
-             if let convertedJsonIntoDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-             
-             // Print out dictionary
-             print(convertedJsonIntoDict)
-             
-             let firstNameValue = convertedJsonIntoDict["userName"] as? String
-             print(firstNameValue!)
-             
-             }
-             } catch let error as NSError {
-             print(error.localizedDescription)
-             }
-             */
+            if responseString!.containsString("invalid_client") == true {
+                print ("NOPE")
+                completion(0)
+            } else { completion(1) }
         }
         
         task.resume()
@@ -179,7 +191,6 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
         }
     }
-    
     
     
     /*

@@ -25,6 +25,7 @@
 		AD72CC8E1D3ACA150054A10B /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC8D1D3ACA150054A10B /* HealthKitManager.swift */; };
 		AD7F73651D44D920002F5369 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7F73641D44D920002F5369 /* DetailController.swift */; };
 		AD7F73711D44F755002F5369 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7F73701D44F755002F5369 /* LineChart.swift */; };
+		ADF6AE391D4B47E40002BD37 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF6AE381D4B47E30002BD37 /* Property List.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		AD72CC8D1D3ACA150054A10B /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		AD7F73641D44D920002F5369 /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		AD7F73701D44F755002F5369 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineChart.swift; path = "../../../Downloads/swift-linechart-master/linechart/LineChart.swift"; sourceTree = "<group>"; };
+		ADF6AE381D4B47E30002BD37 /* Property List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,10 +171,11 @@
 				AD2514BE1D3E5D1E00D9D850 /* Manager */,
 				AD2514BD1D3E5CF400D9D850 /* Controllers */,
 				AD72CC8A1D3AC6E90054A10B /* uclactive.entitlements */,
+				ADF6AE381D4B47E30002BD37 /* Property List.plist */,
+				AD72CC681D3AC6D70054A10B /* Info.plist */,
 				AD72CC5A1D3AC6D60054A10B /* AppDelegate.swift */,
 				AD72CC601D3AC6D60054A10B /* Main.storyboard */,
 				AD72CC651D3AC6D70054A10B /* LaunchScreen.storyboard */,
-				AD72CC681D3AC6D70054A10B /* Info.plist */,
 				AD07BB3F1D3F69E60012850D /* Assets.xcassets */,
 				AD07BB491D3FE9480012850D /* Twitter User Interface-Bridging-Header.h */,
 			);
@@ -320,6 +323,7 @@
 			files = (
 				AD72CC671D3AC6D70054A10B /* LaunchScreen.storyboard in Resources */,
 				AD07BB401D3F69E60012850D /* Assets.xcassets in Resources */,
+				ADF6AE391D4B47E40002BD37 /* Property List.plist in Resources */,
 				AD72CC621D3AC6D60054A10B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
