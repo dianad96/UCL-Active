@@ -610,6 +610,59 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         tableView.reloadData()
     }
+    
+    
+    // Send data to Aidbox
+    @IBAction func sync(sender: AnyObject) {
+        // Send HTTP GET Request
+        
+        sendData("blood-pressure", snomedCode: "12321", observationDisplay: "Blood Pressure", observationValue: "132", observationUnit: "who knows")
+        
+    }
+    
+    func sendData(observationType: String, snomedCode: String, observationDisplay: String, observationValue: String, observationUnit: String) {
+        let scriptUrl = "https://uclactive.aidbox.io/fhir"
+        let urlWithParams = scriptUrl + "/Observation?access_token=dce1ebc0-33ed-43f0-b471-24da1f532c85"
+        let myUrl = NSURL(string: urlWithParams);
+        
+        let request = NSMutableURLRequest(URL:myUrl!);
+        request.HTTPMethod = "POST"
+        
+        // Get Current Date
+        let date = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+        let year =  components.year
+        let month = components.month
+        let day = components.day
+        
+        let today_date = String(day) + "/" + String(month) + "/" + String(year)
+        
+        // Daily Steps
+        let jsonString = "{\"resourceType\":\"Observation\",\"identifier\":\"" + observationType + "\",\"code\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"" + snomedCode + "\",\"display\":\"" + observationDisplay + "\"}]},\"subject\":{\"reference\":\"Patient/87f95c58-b826-40d9-b7fb-69c600308e08\"},\"issued\":\"" + today_date + "\",\"valueQuantity\":{\"value\":\"" + observationValue + "\",\"unit\":\"" + observationUnit + "\"}}"
+        
+        //let jsonString = "json=[{\"str\":\"Hello\",\"num\":1},{\"str\":\"Goodbye\",\"num\":99}]"
+        request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            // Check for error
+            if error != nil
+            {
+                print("error=\(error)")
+                return
+            }
+            
+            // Print out response string
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+            
+        }
+        task.resume()
+    }
+    
 
 }
 
