@@ -616,8 +616,46 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBAction func sync(sender: AnyObject) {
         // Send HTTP GET Request
         
-        sendData("blood-pressure", snomedCode: "12321", observationDisplay: "Blood Pressure", observationValue: "132", observationUnit: "who knows")
+
+        //Send Daily Steps
+        if(self.todayStepsValue != 0.0) {
+            sendData("daily-steps", snomedCode: "-", observationDisplay: "Daily Steps", observationValue: String(self.todayStepsValue), observationUnit: "steps")}
         
+        //Send Average Steps
+        if(self.averageStepsValue != 0.0) {
+            sendData("daverage-steps", snomedCode: "-", observationDisplay: "Average Steps", observationValue: String(self.averageStepsValue), observationUnit: "steps")}
+        
+        //Send Active Energy
+        if(self.todayActiveEnergy != 0.0) {
+            sendData("active-energy", snomedCode: "-", observationDisplay: "Active Energy", observationValue: String(self.todayActiveEnergy), observationUnit: "kcal")}
+        
+        //Send Date of Birth
+        if(self.birthdateValue != "Not enough data/Unauthorized") {
+            sendData("birthdate", snomedCode: "184099003", observationDisplay: "Birthdate", observationValue: String(self.birthdateValue), observationUnit: "")}
+        
+        //Send Sex
+        if(self.sexValue != "Not enough data/Unauthorized") {
+            sendData("sex", snomedCode: "184100006", observationDisplay: "Sex", observationValue: String(self.sexValue), observationUnit: "")}
+        
+        //Send Blood Type
+        if(self.bloodTypeValue != "Not enough data/Unauthorized") {
+            sendData("blood-type", snomedCode: "365636006", observationDisplay: "Blood Type", observationValue: String(self.bloodTypeValue), observationUnit: "")}
+        
+        //Send Skin Type
+        if(self.skinType != "Not enough data/Unauthorized") {
+            sendData("skin-type", snomedCode: "39937001", observationDisplay: "Skin Type", observationValue: String(self.skinType), observationUnit: "")}
+        
+        //Send Height
+        if(self.height != "Not enough data/Unauthorized") {
+            sendData("height", snomedCode: "50373000", observationDisplay: "Height", observationValue: String(self.height), observationUnit: "cm")}
+        
+        //Send Weight
+        if(self.weightValue != "Not enough data/Unauthorized") {
+            sendData("weight", snomedCode: "27113001", observationDisplay: "Weight", observationValue: String(self.weightValue), observationUnit: "kg")}
+        
+        //Send BMI
+        if(self.bmiValue != "Not enough data/Unauthorized") {
+            sendData("bmi", snomedCode: "60621009", observationDisplay: "BMI", observationValue: String(self.bmiValue), observationUnit: "")}
     }
     
     func sendData(observationType: String, snomedCode: String, observationDisplay: String, observationValue: String, observationUnit: String) {
