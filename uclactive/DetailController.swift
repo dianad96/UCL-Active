@@ -11,8 +11,9 @@ import UIKit
 import QuartzCore
 
 
-class DetailController: UIViewController, LineChartDelegate{
+class DetailController: UIViewController{
     
+    /*
 
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var navBar: UINavigationBar!
@@ -116,6 +117,6 @@ class DetailController: UIViewController, LineChartDelegate{
     @IBAction func back(sender: AnyObject) {
         self.performSegueWithIdentifier("back", sender:self)
     }
-    
+    */
     
 }

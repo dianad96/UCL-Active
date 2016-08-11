@@ -1,4 +1,4 @@
-//
+	//
 //  ProfileController.swift
 //  uclactive
 //
@@ -549,8 +549,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
        // if segue.identifier == "detailsController" {
             print("WHY AM I HERE?")
         var secondVC: DetailController = segue.destinationViewController as! DetailController
-        secondVC.received = todayStepsValue
-        secondVC.rowPressed = pressed
+        //secondVC.received = todayStepsValue
+        //secondVC.rowPressed = pressed
         
        // }
     }
@@ -612,11 +612,56 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     
-    // Send data to Aidbox
+    
     @IBAction func sync(sender: AnyObject) {
         // Send HTTP GET Request
         
-
+        
+        //**SEND DATA TO NODE SERVER**//
+        let myUrl = NSURL(string: "http://uclactiveserver.westeurope.cloudapp.azure.com:3000/sendmessage");
+        
+        let request = NSMutableURLRequest(URL:myUrl!);
+        
+        request.HTTPMethod = "POST";// Compose a query string
+        
+        let postString = "{\"BasicInfo\":{\"birthdate\":\""+self.birthdateValue+"\",\"height\":\""+self.heightValue+"\",\"weight\":\""+self.weightValue+"\",\"bmi\":\""+self.bmiValue+"\",\"sex\":\""+self.sexValue+"\",\"bloodType\":\""+self.bloodTypeValue+"\",\"skin type\":\""+self.skinType+"\"}}";
+        
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil
+            {
+                print("error=\(error)")
+                return
+            }
+            
+            // You can print out response object
+            print("response = \(response)")
+            
+            // Print out response body
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+            
+            //Let's convert response sent from a server side script to a NSDictionary object:
+            do {
+                let myJSON =  try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
+                
+                if let parseJSON = myJSON {
+                    
+                    // Now we can access value of First Name by its key
+                    let firstNameValue = parseJSON["firstName"] as? String
+                    print("firstNameValue: \(firstNameValue)")
+                }
+            } catch {
+                print(error)
+            }
+        }
+        task.resume()
+ 
+        /*
+        //**SEND DATA TO AIDBOX**//
         //Send Daily Steps
         if(self.todayStepsValue != 0.0) {
             sendData("daily-steps", snomedCode: "-", observationDisplay: "Daily Steps", observationValue: String(self.todayStepsValue), observationUnit: "steps")}
@@ -656,7 +701,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         //Send BMI
         if(self.bmiValue != "Not enough data/Unauthorized") {
             sendData("bmi", snomedCode: "60621009", observationDisplay: "BMI", observationValue: String(self.bmiValue), observationUnit: "")}
-    }
+    */
+     }
     
     func sendData(observationType: String, snomedCode: String, observationDisplay: String, observationValue: String, observationUnit: String) {
         let scriptUrl = "https://uclactive.aidbox.io/fhir"
