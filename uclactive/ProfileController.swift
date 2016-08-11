@@ -618,7 +618,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
         //**SEND DATA TO NODE SERVER**//
-        let myUrl = NSURL(string: "http://uclactiveserver.westeurope.cloudapp.azure.com:3000/sendmessage");
+        let myUrl = NSURL(string: "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/sendmessage");
         
         let request = NSMutableURLRequest(URL:myUrl!);
         
