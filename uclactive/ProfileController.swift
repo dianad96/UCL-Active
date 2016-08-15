@@ -9,6 +9,7 @@
 import UIKit
 import HealthKit
 import Foundation
+import Alamofire
 
 struct Recipe {
     var name: String
@@ -175,7 +176,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             if authorized {
                 
                 // Get and set the user's data.
-                self.setHeight()
+                //self.setHeight()
                 self.getSex()
                 self.getBloodType()
                 self.getSkinType()
@@ -618,47 +619,48 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
         //**SEND DATA TO NODE SERVER**//
-        let myUrl = NSURL(string: "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/sendmessage");
+        let parameters = [
+            "resourceType":"Observation",
+            "code":[
+                "coding":[
+                    [
+                        "system":"http://openmrs.org",
+                        "code":"85062ed4-6223-11e6-a4f9-000d3a23bb00",
+                        "display":"PULSE"
+                    ],
+                    [
+                        "system":"http://loinc.org",
+                        "code":"8889-8",
+                        "display":"Heart Rate"
+                    ]
+                 ]
+            ],
+            "valueQuantity":[
+                "value":150,
+                "units":"bpm",
+                "system":"http://unitsofmeasure.org",
+                "code":"bpm"
+            ],
+            "appliesDateTime":"2016-08-14T09:41:52",
+            "issued":"2016-08-14T09:41:52.000",
+            "status":"final",
+            "reliability":"ok",
+            "subject":[
+                "reference":"Patient/85511527-6223-11e6-a4f9-000d3a23bb00"
+            ],
+            "referenceRange":[
+                [
+                    "high":[
+                        "value":120,
+                        "units":"bpm",
+                        "system":"http://unitsofmeasure.org",
+                        "code":"bpm"
+                        ]
+                ]
+            ]
+        ]
         
-        let request = NSMutableURLRequest(URL:myUrl!);
-        
-        request.HTTPMethod = "POST";// Compose a query string
-        
-        let postString = "{\"BasicInfo\":{\"birthdate\":\""+self.birthdateValue+"\",\"height\":\""+self.heightValue+"\",\"weight\":\""+self.weightValue+"\",\"bmi\":\""+self.bmiValue+"\",\"sex\":\""+self.sexValue+"\",\"bloodType\":\""+self.bloodTypeValue+"\",\"skin type\":\""+self.skinType+"\"}}";
-        
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
-            if error != nil
-            {
-                print("error=\(error)")
-                return
-            }
-            
-            // You can print out response object
-            print("response = \(response)")
-            
-            // Print out response body
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString)")
-            
-            //Let's convert response sent from a server side script to a NSDictionary object:
-            do {
-                let myJSON =  try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
-                
-                if let parseJSON = myJSON {
-                    
-                    // Now we can access value of First Name by its key
-                    let firstNameValue = parseJSON["firstName"] as? String
-                    print("firstNameValue: \(firstNameValue)")
-                }
-            } catch {
-                print(error)
-            }
-        }
-        task.resume()
+        Alamofire.request(.POST, "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/sendmessage", parameters: parameters)
  
         /*
         //**SEND DATA TO AIDBOX**//

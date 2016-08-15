@@ -1,0 +1,6 @@
+framework module Pods_uclactive {
+  umbrella header "Pods-uclactive-umbrella.h"
+
+  export *
+  module * { export * }
+}
