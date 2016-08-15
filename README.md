@@ -23,7 +23,7 @@ UCL will protect the anonymity of the contributors and will have oversight of th
 
 ## Installation
 ### Dependencies
-* Install [Alamonfire] (https://github.com/Alamofire/Alamofire)
+* Install [Alamofire] (https://github.com/Alamofire/Alamofire)
 
 ---
 License under Apache License 2.0
