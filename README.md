@@ -4,7 +4,8 @@
              )](https://developer.apple.com/iphone/index.action)
 [![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
              )](https://developer.apple.com/swift)
-
+             
+  The Android Version of the project can be found [here] (https://github.com/DianaD96/Team13-OpenMRS)
 ## The Project
 The purpose of the project is to develop a UCL data store, to aggregate and manage fitness and lifestyle data submitted by UCL staff and students.
 UCL will protect the anonymity of the contributors and will have oversight of the ways in which this growing data set will be used to further research in digital health analytics.
@@ -16,10 +17,16 @@ UCL will protect the anonymity of the contributors and will have oversight of th
 
 + Our vision is aligned with UCL 2034 to apply our scholarly knowledge to contribute to improving the sporting performance of amateurs and elites worldwide. 
 
+## System Components
+![Components]
+
 ## Project Architecture
 ![Architecture]
+![Arch]
 
 [Architecture]: http://i65.tinypic.com/i2j7sk.png
+[Arch]: http://i66.tinypic.com/4jvtb5.png
+[Components]: http://i63.tinypic.com/2a6m6ad.png
 
 ## Installation
 ### Dependencies
