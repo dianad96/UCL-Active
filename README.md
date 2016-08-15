@@ -21,5 +21,9 @@ UCL will protect the anonymity of the contributors and will have oversight of th
 
 [Architecture]: http://i65.tinypic.com/i2j7sk.png
 
+## Installation
+### Dependencies
+* Install [Alamonfire] (https://github.com/Alamofire/Alamofire)
+
 ---
 License under Apache License 2.0
