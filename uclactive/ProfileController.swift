@@ -40,7 +40,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     var average_steps_uuid: String = "e8581e20-5d50-4578-8447-b43ba56b0990"
     var active_energy_uuid: String = "58431d42-19d4-4992-87f7-ccf5774b3059"
     var date_of_birth_uuid: String = "fea80672-aa3a-4ff9-9ae0-b440752a37bc"
-    var sex_uuid: String = "999db5e0-f080-4a05-83e9-f9e8c763c518"
+    var sex_uuid: String = "3d8cffcd-59a8-422d-b6f5-b4f18a0b2863"
     var blood_type_uuid: String = "20f83fad-25b0-4766-bd60-2a23369489d2"
     var skin_type_uuid: String = "9287547e-5601-4337-8490-6977b3f862ce"
     var weight_uuid: String = "7945ff5e-32a8-4728-90bf-1bd2695c8dae"
@@ -668,8 +668,9 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         return cell
     }
+
     
-    func sendDatatoNode(openMRS_uuid: String, snomed_code: String, loinc_code:String, concept_name:String, concept_unit:String, concept_value:AnyObject) {
+    func sendDatatoNode_Numerical(openMRS_uuid: String, snomed_code: String, loinc_code:String, concept_name:String, concept_unit:String, concept_value:AnyObject) {
         
         //**SEND DATA TO NODE SERVER**//
         let parameters = [
@@ -694,10 +695,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
                 ]
             ],
             "valueQuantity":[
-                "value":concept_value,
-                "units":concept_unit,
-                "system": self.unit_system,
-                "code":concept_unit
+                "value":concept_value
             ],
             "appliesDateTime":"2016-08-14T09:41:52",
             "issued":"2016-08-14T09:41:52.000",
@@ -710,7 +708,44 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         Alamofire.request(.POST, "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/sendmessage", parameters: parameters)
     }
-    
+    func sendDatatoNode_String(openMRS_uuid: String, snomed_code: String, loinc_code:String, concept_name:String, concept_unit:String, concept_value:AnyObject) {
+        
+        //**SEND DATA TO NODE SERVER**//
+        let parameters = [
+            "resourceType":"Observation",
+            "code":[
+                "coding":[
+                    [
+                        "system": self.coding_system_1,
+                        "code":openMRS_uuid,
+                        "display":concept_name
+                    ],
+                    [
+                        "system": self.coding_system_2,
+                        "code":snomed_code,
+                        "display":concept_name
+                    ],
+                    [
+                        "system": self.coding_system_3,
+                        "code":loinc_code,
+                        "display":concept_name
+                    ]
+                ]
+            ],
+            "valueString":[
+                "value":concept_value
+            ],
+            "appliesDateTime":"2016-08-14T09:41:52",
+            "issued":"2016-08-14T09:41:52.000",
+            "status":"final",
+            "reliability":"ok",
+            "subject":[
+                "reference":"Patient/" + self.person_uuid
+            ]
+        ]
+        
+        Alamofire.request(.POST, "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/sendmessage", parameters: parameters)
+    }
     
     // Sending data to Aidbox
     func sendData(observationType: String, snomedCode: String, observationDisplay: String, observationValue: String, observationUnit: String) {
@@ -775,47 +810,46 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         //**SEND DATA TO NODEjs**//
         //Send Daily Steps 
-        /*
+        
         if(self.todayStepsValue != 0.0) {
-            sendDatatoNode(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, concept_value: self.todayStepsValue)}
+            sendDatatoNode_Numerical(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, concept_value: self.todayStepsValue)}
         
         //Send Average Steps
         if(self.averageStepsValue != 0.0) {
-            sendDatatoNode(self.average_steps_uuid, snomed_code: self.average_steps_snomed, loinc_code: self.average_steps_loinc, concept_name: self.average_steps_name, concept_unit: self.average_steps_unit, concept_value: self.averageStepsValue)}
+            sendDatatoNode_Numerical(self.average_steps_uuid, snomed_code: self.average_steps_snomed, loinc_code: self.average_steps_loinc, concept_name: self.average_steps_name, concept_unit: self.average_steps_unit, concept_value: self.averageStepsValue)}
         
         //Send Active Energy
         if(self.todayActiveEnergy != 0.0) {
-            sendDatatoNode(self.active_energy_uuid, snomed_code: self.active_energy_snomed, loinc_code: self.active_energy_loinc, concept_name: self.active_energy_name, concept_unit: self.active_energy_unit, concept_value: self.todayActiveEnergy)}
+            sendDatatoNode_Numerical(self.active_energy_uuid, snomed_code: self.active_energy_snomed, loinc_code: self.active_energy_loinc, concept_name: self.active_energy_name, concept_unit: self.active_energy_unit, concept_value: self.todayActiveEnergy)}
 
         //Send Date of Birth
         if(self.birthdateValue != "Not enough data/Unauthorized") {
-            sendDatatoNode(self.date_of_birth_uuid, snomed_code: self.date_of_birth_snomed, loinc_code: self.date_of_birth_loinc, concept_name: self.date_of_birth_name, concept_unit: self.date_of_birth_unit, concept_value: self.birthdateValue)} */
+            sendDatatoNode_String(self.date_of_birth_uuid, snomed_code: self.date_of_birth_snomed, loinc_code: self.date_of_birth_loinc, concept_name: self.date_of_birth_name, concept_unit: self.date_of_birth_unit, concept_value: self.birthdateValue)}
         
         //Send Sex
         if(self.sexValue != "Not enough data/Unauthorized") {
-            sendDatatoNode(self.sex_uuid, snomed_code: self.sex_snomed, loinc_code: self.sex_loinc, concept_name: self.sex_name, concept_unit: self.sex_unit, concept_value: self.sexValue)}
+            sendDatatoNode_String(self.sex_uuid, snomed_code: self.sex_snomed, loinc_code: self.sex_loinc, concept_name: self.sex_name, concept_unit: self.sex_unit, concept_value: self.sexValue)}
         
-        /*
         //Send Blood Type
         if(self.bloodTypeValue != "Not enough data/Unauthorized") {
-            sendDatatoNode(self.blood_type_uuid, snomed_code: self.blood_type_snomed, loinc_code: self.blood_type_loinc, concept_name: self.blood_type_name, concept_unit: self.blood_type_unit, concept_value: self.bloodTypeValue)}
+            sendDatatoNode_String(self.blood_type_uuid, snomed_code: self.blood_type_snomed, loinc_code: self.blood_type_loinc, concept_name: self.blood_type_name, concept_unit: self.blood_type_unit, concept_value: self.bloodTypeValue)}
         
         //Send Skin Type
         if(self.skinType != "Not enough data/Unauthorized") {
-            sendDatatoNode(self.skin_type_uuid, snomed_code: self.skin_type_snomed, loinc_code: self.skin_type_loinc, concept_name: self.skin_type_name, concept_unit: self.skin_type_unit, concept_value: self.skinType)}
+            sendDatatoNode_String(self.skin_type_uuid, snomed_code: self.skin_type_snomed, loinc_code: self.skin_type_loinc, concept_name: self.skin_type_name, concept_unit: self.skin_type_unit, concept_value: self.skinType)}
         
         
         //Send Height
         if(self.height != "Not enough data/Unauthorized") {
-            sendDatatoNode(self.height_uuid, snomed_code: self.height_snomed, loinc_code: self.height_loinc, concept_name: self.height_name, concept_unit: self.height_unit, concept_value: self.height!)}
+            sendDatatoNode_Numerical(self.height_uuid, snomed_code: self.height_snomed, loinc_code: self.height_loinc, concept_name: self.height_name, concept_unit: self.height_unit, concept_value: self.height!)}
             
         //Send Weight
         if(self.weightValue != "Not enough data/Unauthorized") {
-            sendDatatoNode(self.weight_uuid, snomed_code: self.weight_snomed, loinc_code: self.weight_loinc, concept_name: self.weight_name, concept_unit: self.weight_unit, concept_value: self.weightValue)}
+            sendDatatoNode_Numerical(self.weight_uuid, snomed_code: self.weight_snomed, loinc_code: self.weight_loinc, concept_name: self.weight_name, concept_unit: self.weight_unit, concept_value: self.weightValue)}
         
         //Send BMI
         if(self.bmiValue != "Not enough data/Unauthorized" && self.bmiValue != "inf") {
-            sendDatatoNode(self.bmi_uuid, snomed_code: self.bmi_snomed, loinc_code: self.bmi_loinc, concept_name: self.bmi_name, concept_unit: self.bmi_unit, concept_value: self.bmiValue)} */
+            sendDatatoNode_Numerical(self.bmi_uuid, snomed_code: self.bmi_snomed, loinc_code: self.bmi_loinc, concept_name: self.bmi_name, concept_unit: self.bmi_unit, concept_value: self.bmiValue)}
     }
 
 }
