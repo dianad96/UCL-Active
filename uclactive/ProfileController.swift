@@ -1,4 +1,3 @@
-	//
 //  ProfileController.swift
 //  uclactive
 //
@@ -31,6 +30,75 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     let healthManager: HealthKitManager = HealthKitManager()
     var height: HKQuantitySample?
     var bmi: HKQuantitySample?
+    
+    
+    //openMRS 
+    var person_uuid: String = "85511527-6223-11e6-a4f9-000d3a23bb00"
+    //concepts openmrs
+    var heart_rate_uuid: String = "85062ed4-6223-11e6-a4f9-000d3a23bb00"
+    var daily_steps_uuid: String = "cc66a103-8bdb-4128-83f8-23abb9124b93"
+    var average_steps_uuid: String = "e8581e20-5d50-4578-8447-b43ba56b0990"
+    var active_energy_uuid: String = "58431d42-19d4-4992-87f7-ccf5774b3059"
+    var date_of_birth_uuid: String = "fea80672-aa3a-4ff9-9ae0-b440752a37bc"
+    var sex_uuid: String = "999db5e0-f080-4a05-83e9-f9e8c763c518"
+    var blood_type_uuid: String = "20f83fad-25b0-4766-bd60-2a23369489d2"
+    var skin_type_uuid: String = "9287547e-5601-4337-8490-6977b3f862ce"
+    var weight_uuid: String = "7945ff5e-32a8-4728-90bf-1bd2695c8dae"
+    var height_uuid: String = "60e82064-7a69-4a2a-a5f3-290c36de0513"
+    var bmi_uuid: String = "1f3bccd6-06bb-4a32-8506-91379c6ebafb"
+    // concepts snomed
+    var heart_rate_snomed: String = "364075005"
+    var daily_steps_snomed: String = ""
+    var average_steps_snomed: String = ""
+    var active_energy_snomed: String = "359755007"
+    var date_of_birth_snomed: String = "184099003"
+    var sex_snomed: String = ""
+    var blood_type_snomed: String = "365642005"
+    var skin_type_snomed: String = ""
+    var weight_snomed: String = "27113001"
+    var height_snomed: String = "50373000"
+    var bmi_snomed: String = "60621009"
+    // concepts loinc
+    var heart_rate_loinc: String = "8867-4"
+    var daily_steps_loinc: String = "c41950-7"
+    var average_steps_loinc: String = "41950-7"
+    var active_energy_loinc: String = ""
+    var date_of_birth_loinc: String = "21112-8"
+    var sex_loinc: String = "76689-9"
+    var blood_type_loinc: String = "933-2"
+    var skin_type_loinc: String = "66555-4"
+    var weight_loinc: String = "29463-7"
+    var height_loinc: String = "8302-2"
+    var bmi_loinc: String = "59574-4"
+    // concepts names
+    var heart_rate_name: String = "Heart Rate"
+    var daily_steps_name: String = "Daily Steps"
+    var average_steps_name: String = "Average Steps"
+    var active_energy_name: String = "Energy Steps"
+    var date_of_birth_name: String = "Date of Birth"
+    var sex_name: String = "Sex"
+    var blood_type_name: String = "Blood Type"
+    var skin_type_name: String = "Skin Type"
+    var weight_name: String = "Weight"
+    var height_name: String = "Height"
+    var bmi_name: String = "BMI"
+    //concepts units
+    var heart_rate_unit: String = "bmp"
+    var daily_steps_unit: String = "steps"
+    var average_steps_unit: String = "steps"
+    var active_energy_unit: String = "kcal"
+    var date_of_birth_unit: String = ""
+    var sex_unit: String = ""
+    var blood_type_unit: String = ""
+    var skin_type_unit: String = ""
+    var weight_unit: String = "kg"
+    var height_unit: String = "cm"
+    var bmi_unit: String = "kg/m2"
+    //coding names
+    var coding_system_1: String = "http://openmrs.org"
+    var coding_system_2: String = "http://snomed.org"
+    var coding_system_3: String = "http://loinc.org"
+    var unit_system: String = "http://unitsofmeasure.org"
     
     //Credentials
     var apigeeKey: String = ""
@@ -600,23 +668,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         return cell
     }
-  
-    @IBAction func selectContentType(sender: AnyObject) {
-        if sender.selectedSegmentIndex == 0 {
-            contentToDisplay = .Performance
-        }
-        else {
-            contentToDisplay = .Details
-        }
-        
-        tableView.reloadData()
-    }
     
-    
-    
-    @IBAction func sync(sender: AnyObject) {
-        // Send HTTP GET Request
-        
+    func sendDatatoNode(openMRS_uuid: String, snomed_code: String, loinc_code:String, concept_name:String, concept_unit:String, concept_value:AnyObject) {
         
         //**SEND DATA TO NODE SERVER**//
         let parameters = [
@@ -624,88 +677,42 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             "code":[
                 "coding":[
                     [
-                        "system":"http://openmrs.org",
-                        "code":"85062ed4-6223-11e6-a4f9-000d3a23bb00",
-                        "display":"PULSE"
+                        "system": self.coding_system_1,
+                        "code":openMRS_uuid,
+                        "display":concept_name
                     ],
                     [
-                        "system":"http://loinc.org",
-                        "code":"8889-8",
-                        "display":"Heart Rate"
+                        "system": self.coding_system_2,
+                        "code":snomed_code,
+                        "display":concept_name
+                    ],
+                    [
+                        "system": self.coding_system_3,
+                        "code":loinc_code,
+                        "display":concept_name
                     ]
-                 ]
+                ]
             ],
             "valueQuantity":[
-                "value":150,
-                "units":"bpm",
-                "system":"http://unitsofmeasure.org",
-                "code":"bpm"
+                "value":concept_value,
+                "units":concept_unit,
+                "system": self.unit_system,
+                "code":concept_unit
             ],
             "appliesDateTime":"2016-08-14T09:41:52",
             "issued":"2016-08-14T09:41:52.000",
             "status":"final",
             "reliability":"ok",
             "subject":[
-                "reference":"Patient/85511527-6223-11e6-a4f9-000d3a23bb00"
-            ],
-            "referenceRange":[
-                [
-                    "high":[
-                        "value":120,
-                        "units":"bpm",
-                        "system":"http://unitsofmeasure.org",
-                        "code":"bpm"
-                        ]
-                ]
+                "reference":"Patient/" + self.person_uuid
             ]
         ]
         
         Alamofire.request(.POST, "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/sendmessage", parameters: parameters)
- 
-        /*
-        //**SEND DATA TO AIDBOX**//
-        //Send Daily Steps
-        if(self.todayStepsValue != 0.0) {
-            sendData("daily-steps", snomedCode: "-", observationDisplay: "Daily Steps", observationValue: String(self.todayStepsValue), observationUnit: "steps")}
-        
-        //Send Average Steps
-        if(self.averageStepsValue != 0.0) {
-            sendData("daverage-steps", snomedCode: "-", observationDisplay: "Average Steps", observationValue: String(self.averageStepsValue), observationUnit: "steps")}
-        
-        //Send Active Energy
-        if(self.todayActiveEnergy != 0.0) {
-            sendData("active-energy", snomedCode: "-", observationDisplay: "Active Energy", observationValue: String(self.todayActiveEnergy), observationUnit: "kcal")}
-        
-        //Send Date of Birth
-        if(self.birthdateValue != "Not enough data/Unauthorized") {
-            sendData("birthdate", snomedCode: "184099003", observationDisplay: "Birthdate", observationValue: String(self.birthdateValue), observationUnit: "")}
-        
-        //Send Sex
-        if(self.sexValue != "Not enough data/Unauthorized") {
-            sendData("sex", snomedCode: "184100006", observationDisplay: "Sex", observationValue: String(self.sexValue), observationUnit: "")}
-        
-        //Send Blood Type
-        if(self.bloodTypeValue != "Not enough data/Unauthorized") {
-            sendData("blood-type", snomedCode: "365636006", observationDisplay: "Blood Type", observationValue: String(self.bloodTypeValue), observationUnit: "")}
-        
-        //Send Skin Type
-        if(self.skinType != "Not enough data/Unauthorized") {
-            sendData("skin-type", snomedCode: "39937001", observationDisplay: "Skin Type", observationValue: String(self.skinType), observationUnit: "")}
-        
-        //Send Height
-        if(self.height != "Not enough data/Unauthorized") {
-            sendData("height", snomedCode: "50373000", observationDisplay: "Height", observationValue: String(self.height), observationUnit: "cm")}
-        
-        //Send Weight
-        if(self.weightValue != "Not enough data/Unauthorized") {
-            sendData("weight", snomedCode: "27113001", observationDisplay: "Weight", observationValue: String(self.weightValue), observationUnit: "kg")}
-        
-        //Send BMI
-        if(self.bmiValue != "Not enough data/Unauthorized") {
-            sendData("bmi", snomedCode: "60621009", observationDisplay: "BMI", observationValue: String(self.bmiValue), observationUnit: "")}
-    */
-     }
+    }
     
+    
+    // Sending data to Aidbox
     func sendData(observationType: String, snomedCode: String, observationDisplay: String, observationValue: String, observationUnit: String) {
         let scriptUrl = "https://uclactive.aidbox.io/fhir"
         let urlWithParams = scriptUrl + "/Observation?access_token=dce1ebc0-33ed-43f0-b471-24da1f532c85"
@@ -748,7 +755,68 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         task.resume()
     }
+
+  
+    @IBAction func selectContentType(sender: AnyObject) {
+        if sender.selectedSegmentIndex == 0 {
+            contentToDisplay = .Performance
+        }
+        else {
+            contentToDisplay = .Details
+        }
+        
+        tableView.reloadData()
+    }
     
+    
+    
+    @IBAction func sync(sender: AnyObject) {
+        // Send HTTP GET Request
+        
+        //**SEND DATA TO NODEjs**//
+        //Send Daily Steps 
+        /*
+        if(self.todayStepsValue != 0.0) {
+            sendDatatoNode(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, concept_value: self.todayStepsValue)}
+        
+        //Send Average Steps
+        if(self.averageStepsValue != 0.0) {
+            sendDatatoNode(self.average_steps_uuid, snomed_code: self.average_steps_snomed, loinc_code: self.average_steps_loinc, concept_name: self.average_steps_name, concept_unit: self.average_steps_unit, concept_value: self.averageStepsValue)}
+        
+        //Send Active Energy
+        if(self.todayActiveEnergy != 0.0) {
+            sendDatatoNode(self.active_energy_uuid, snomed_code: self.active_energy_snomed, loinc_code: self.active_energy_loinc, concept_name: self.active_energy_name, concept_unit: self.active_energy_unit, concept_value: self.todayActiveEnergy)}
+
+        //Send Date of Birth
+        if(self.birthdateValue != "Not enough data/Unauthorized") {
+            sendDatatoNode(self.date_of_birth_uuid, snomed_code: self.date_of_birth_snomed, loinc_code: self.date_of_birth_loinc, concept_name: self.date_of_birth_name, concept_unit: self.date_of_birth_unit, concept_value: self.birthdateValue)} */
+        
+        //Send Sex
+        if(self.sexValue != "Not enough data/Unauthorized") {
+            sendDatatoNode(self.sex_uuid, snomed_code: self.sex_snomed, loinc_code: self.sex_loinc, concept_name: self.sex_name, concept_unit: self.sex_unit, concept_value: self.sexValue)}
+        
+        /*
+        //Send Blood Type
+        if(self.bloodTypeValue != "Not enough data/Unauthorized") {
+            sendDatatoNode(self.blood_type_uuid, snomed_code: self.blood_type_snomed, loinc_code: self.blood_type_loinc, concept_name: self.blood_type_name, concept_unit: self.blood_type_unit, concept_value: self.bloodTypeValue)}
+        
+        //Send Skin Type
+        if(self.skinType != "Not enough data/Unauthorized") {
+            sendDatatoNode(self.skin_type_uuid, snomed_code: self.skin_type_snomed, loinc_code: self.skin_type_loinc, concept_name: self.skin_type_name, concept_unit: self.skin_type_unit, concept_value: self.skinType)}
+        
+        
+        //Send Height
+        if(self.height != "Not enough data/Unauthorized") {
+            sendDatatoNode(self.height_uuid, snomed_code: self.height_snomed, loinc_code: self.height_loinc, concept_name: self.height_name, concept_unit: self.height_unit, concept_value: self.height!)}
+            
+        //Send Weight
+        if(self.weightValue != "Not enough data/Unauthorized") {
+            sendDatatoNode(self.weight_uuid, snomed_code: self.weight_snomed, loinc_code: self.weight_loinc, concept_name: self.weight_name, concept_unit: self.weight_unit, concept_value: self.weightValue)}
+        
+        //Send BMI
+        if(self.bmiValue != "Not enough data/Unauthorized" && self.bmiValue != "inf") {
+            sendDatatoNode(self.bmi_uuid, snomed_code: self.bmi_snomed, loinc_code: self.bmi_loinc, concept_name: self.bmi_name, concept_unit: self.bmi_unit, concept_value: self.bmiValue)} */
+    }
 
 }
 
