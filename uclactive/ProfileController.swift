@@ -244,7 +244,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             if authorized {
                 
                 // Get and set the user's data.
-                //self.setHeight()
+                self.setHeight()
                 self.getSex()
                 self.getBloodType()
                 self.getSkinType()
