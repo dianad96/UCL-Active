@@ -3,6 +3,31 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ProfileController.(getObs(JSON) -&gt; ()).(closure #1):ProfileController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;subject&quot;][&quot;reference&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;subject&quot;][&quot;reference&quot;] == aux">
+            </PersistentString>
+            <PersistentString
+               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;code&quot;][&quot;coding&quot;][0][&quot;display&quot;].rawString">
+            </PersistentString>
+            <PersistentString
+               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;code&quot;][&quot;coding&quot;][0][&quot;display&quot;].rawString == concept">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProfileController.sync(AnyObject) -&gt; ():ProfileController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.ok_today">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ProfileController.(getObs() -&gt; ()).(closure #1):ProfileController.swift">
          <PersistentStrings>
             <PersistentString
@@ -10,6 +35,14 @@
             </PersistentString>
             <PersistentString
                value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;valueQuantity&quot;][&quot;value&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProfileController.(checkToday(String) -&gt; ()).(closure #1):ProfileController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.ok_today">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

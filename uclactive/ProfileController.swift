@@ -32,6 +32,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     var height: HKQuantitySample?
     var bmi: HKQuantitySample?
     
+    //checking
+    var ok_today: Int = 0
     
     //openMRS 
     var person_uuid: String = "85511527-6223-11e6-a4f9-000d3a23bb00"
@@ -728,7 +730,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
 
     // Get data directly from openMRS (not calling node)
-    func getObs() {
+    // Checks if the user synced for today. If he has, nothing happens. If not, the value is saved
+    func checkToday(concept: String, callback: () -> ()) {
         
         let user = "nodejs"
         let password = "[]Uclactive15"
@@ -747,8 +750,21 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
                 print("Observation: ", json["entry"][i]["resource"]["code"]["coding"][0]["display"])
                 print("Date: ", json["entry"][i]["resource"]["issued"])
                 print("Value: ", json["entry"][i]["resource"]["valueQuantity"]["value"])
+                print("Patient: ", json["entry"][i]["resource"]["subject"]["reference"])
+                
+                // Checks if the user synced his data for current day
+                if (json["entry"][i]["resource"]["code"]["coding"][0]["display"].rawString() == concept){
+                    print ("@@@@@@@@@@")
+                    let patientAux: String = "Patient/"+self.person_uuid
+                    if (json["entry"][i]["resource"]["subject"]["reference"].rawString() == patientAux){
+                        print("&&&&&&")
+                        self.ok_today = self.ok_today+1
+                    }
+                }
                 i=i+1
             }
+            //code is done, now call the callback
+            callback()
         }
     }
     
@@ -890,15 +906,20 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBAction func sync(sender: AnyObject) {
         // Send HTTP GET Request
         
-        getObs()
         
-        /*
         //**SEND DATA TO NODEjs**//
         //Send Daily Steps 
         
-        if(self.todayStepsValue != 0.0) {
-            sendDatatoNode_Numerical(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, date: self.todayStepsDate, concept_value: self.todayStepsValue)}
+        self.ok_today = 0
+        checkToday("Daily Steps") {
+            if (self.ok_today == 0) {
+                if(self.todayStepsValue != 0.0) {
+                    self.sendDatatoNode_Numerical(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, date: self.todayStepsDate, concept_value: self.todayStepsValue)
+                }
+            }
+        }
         
+        /*
         //Send Average Steps
         if(self.averageStepsValue != 0.0) {
             sendDatatoNode_Numerical(self.average_steps_uuid, snomed_code: self.average_steps_snomed, loinc_code: self.average_steps_loinc, concept_name: self.average_steps_name, concept_unit: self.average_steps_unit, date: self.todayStepsDate ,concept_value: self.averageStepsValue)}
