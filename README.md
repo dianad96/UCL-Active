@@ -30,7 +30,27 @@ UCL will protect the anonymity of the contributors and will have oversight of th
 
 ## Installation
 ### Dependencies
-* Install [Alamofire] (https://github.com/Alamofire/Alamofire)
+* Install Cocoapods
+```sh
+$ gem install cocoapods
+```
+* Install Alamofire and SwiftyJSON
+To integrate Alamofire/SwiftyJSON into your Xcode project using CocoaPods, specify it in your Podfile:
+```sh
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+use_frameworks!
+
+target 'uclactive' do
+pod 'Alamofire', '~> 3.4'
+pod 'SwiftyJSON'
+end
+```
+Then, run the following command:
+
+```sh
+pod install
+```
 
 ---
 License under Apache License 2.0
