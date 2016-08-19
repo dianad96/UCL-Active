@@ -23,7 +23,7 @@ enum contentTypes {
     case Performance, Details
 }
 
-class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate  {
+class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     let healthKitStore:HKHealthStore = HKHealthStore()
 
@@ -125,9 +125,14 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     //Fitness Data
     var todayStepsValue: Double = 0.0
+    var yesterdayStepsValue: Double = 0.0
     var averageStepsValue: Double = 0.0
     var todayActiveEnergy: Double = 0.0
 
+    // Date
+    var todayStepsDate: String = ""
+    var yesterdayStepsDate: String = ""
+    
     //Outlet properties
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -484,7 +489,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
      */
     func getSteps () {
         let endDate = NSDate()
-        let startDate = NSCalendar.currentCalendar().dateByAddingUnit(.Month, value: -1, toDate: endDate, options: [])
+        let startDate = NSCalendar.currentCalendar().dateByAddingUnit(.Month, value: -1 , toDate: endDate, options: [])
         
         let stepsSampleType = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: .None)
@@ -498,22 +503,46 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
                 print("There was an error running the query: \(error)")
             }
             
+            
+            // IMPORTANT NOTE
+            // Healthkit doesn't return the data ordered by when the action was completed but when the data was actually saved
+            // For example if the user has 3 step values:
+            // 2016-08-11 157 steps (1)
+            // 2016-08-19 257 steps (2)
+            // 2016-08-18 65 steps (3)
+            // that were inputed as (1) (3) (2) this is also the way they are going to be fetched
+            // if you want the steps value from yesterday you have to manually search for it
+            
             dispatch_async(dispatch_get_main_queue()) {
                 var dailyAVG:Double = 0.0
                 var i:Int = 0
                 var last:Double = 0.0
+                
+                var dateAux: NSDate = startDate!
                 for steps in results as! [HKQuantitySample]
                 {
                     dailyAVG += steps.quantity.doubleValueForUnit(HKUnit.countUnit())
-                    print(i, dailyAVG)
+                    print(steps.startDate, i, steps.quantity.doubleValueForUnit(HKUnit.countUnit()))
                     i+=1
-                    last = steps.quantity.doubleValueForUnit(HKUnit.countUnit())
+                    
+                    // Getting the last day registered steps
+                    switch steps.startDate.compare(dateAux) {
+                    case .OrderedDescending:
+                        print (dateAux, " < ", steps.startDate )
+                        dateAux = steps.startDate
+                        self.todayStepsValue = steps.quantity.doubleValueForUnit(HKUnit.countUnit())
+                    default:
+                        break
+                    }
+                    
+                    self.todayStepsDate = String(dateAux)
+                    print ("Last day steps: ", self.todayStepsValue, " ", self.todayStepsDate)
                 }
-                self.averageStepsValue = dailyAVG
-                self.todayStepsValue = last
+                self.averageStepsValue = dailyAVG/Double(i)
                 
+                print("Latest Date: ", dateAux)
                 print("average: ", dailyAVG)
-                print("today's steps: ", last)
+                print("today's steps: ", self.todayStepsValue, " ", self.todayStepsDate)
                 
             }
         })
