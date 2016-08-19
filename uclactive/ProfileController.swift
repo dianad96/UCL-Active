@@ -519,13 +519,14 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
                 var last:Double = 0.0
                 
                 var dateAux: NSDate = startDate!
+                var dateAux2: NSDate = startDate!
                 for steps in results as! [HKQuantitySample]
                 {
                     dailyAVG += steps.quantity.doubleValueForUnit(HKUnit.countUnit())
                     print(steps.startDate, i, steps.quantity.doubleValueForUnit(HKUnit.countUnit()))
                     i+=1
                     
-                    // Getting the last day registered steps
+                    // Getting today registered steps
                     switch steps.startDate.compare(dateAux) {
                     case .OrderedDescending:
                         print (dateAux, " < ", steps.startDate )
@@ -534,15 +535,36 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
                     default:
                         break
                     }
-                    
+        
                     self.todayStepsDate = String(dateAux)
-                    print ("Last day steps: ", self.todayStepsValue, " ", self.todayStepsDate)
                 }
-                self.averageStepsValue = dailyAVG/Double(i)
                 
-                print("Latest Date: ", dateAux)
-                print("average: ", dailyAVG)
-                print("today's steps: ", self.todayStepsValue, " ", self.todayStepsDate)
+                print (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+                
+                for steps in results as! [HKQuantitySample]
+                {
+  
+                    // Getting today registered steps
+                    switch steps.startDate.compare(dateAux2) { // find greatest value
+                    case .OrderedDescending:
+                        print ("*** ", steps.startDate, " > ", dateAux2)
+                        switch steps.startDate.compare(dateAux) { // value less than today
+                        case .OrderedAscending:
+                            print (dateAux2, " < ", dateAux)
+                            dateAux2 = steps.startDate
+                            self.yesterdayStepsValue = steps.quantity.doubleValueForUnit(HKUnit.countUnit())
+                            print ("new value: ", dateAux2, " ", self.yesterdayStepsValue)
+                        default : break
+                        }
+                    default: break
+                    }
+                    self.yesterdayStepsDate = String(dateAux2)
+                }
+                
+                
+                self.averageStepsValue = dailyAVG/Double(i)
+                print ("Yesterday steps: ", self.yesterdayStepsValue, " ", self.yesterdayStepsDate)
+                print ("Today steps: ", self.todayStepsValue, " ", self.todayStepsDate)
                 
             }
         })
