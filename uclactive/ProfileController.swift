@@ -544,7 +544,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
                 for steps in results as! [HKQuantitySample]
                 {
   
-                    // Getting today registered steps
+                    // Getting yesterday registered steps
                     switch steps.startDate.compare(dateAux2) { // find greatest value
                     case .OrderedDescending:
                         print ("*** ", steps.startDate, " > ", dateAux2)
@@ -561,6 +561,12 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
                     self.yesterdayStepsDate = String(dateAux2)
                 }
                 
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+                dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                self.yesterdayStepsDate = dateFormatter.stringFromDate(dateAux2)
+                self.todayStepsDate = dateFormatter.stringFromDate(dateAux)
                 
                 self.averageStepsValue = dailyAVG/Double(i)
                 print ("Yesterday steps: ", self.yesterdayStepsValue, " ", self.yesterdayStepsDate)
@@ -720,8 +726,32 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         return cell
     }
 
+    // Get data directly from openMRS (not calling node)
+    func getObs() {
+        
+        let user = "nodejs"
+        let password = "[]Uclactive15"
+        
+        let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+        
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
+       Alamofire
+        .request(.GET, "http://uclactiveserver.westeurope.cloudapp.azure.com:8080/openmrs/ws/fhir/Observation?date="+self.todayStepsDate+"T00:00:00", headers: headers)
+        .responseJSON { response in
+            print(response.request)  // original URL request
+            print(response.response) // URL response
+            print(response.data)     // server data
+            print(response.result)   // result of response serialization
+            
+            if let JSON = response.result.value {
+                print("JSON: \(JSON)")
+            }
+        }
+    }
     
-    func sendDatatoNode_Numerical(openMRS_uuid: String, snomed_code: String, loinc_code:String, concept_name:String, concept_unit:String, concept_value:AnyObject) {
+    func sendDatatoNode_Numerical(openMRS_uuid: String, snomed_code: String, loinc_code:String, concept_name:String, concept_unit:String, date: String, concept_value:AnyObject) {
         
         //**SEND DATA TO NODE SERVER**//
         let parameters = [
@@ -748,8 +778,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             "valueQuantity":[
                 "value":concept_value
             ],
-            "appliesDateTime":"2016-08-14T09:41:52",
-            "issued":"2016-08-14T09:41:52.000",
+            "appliesDateTime": date,
+            "issued": date,
             "status":"final",
             "reliability":"ok",
             "subject":[
@@ -757,7 +787,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             ]
         ]
         
-        Alamofire.request(.POST, "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/sendmessage", parameters: parameters)
+        Alamofire.request(.POST, "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/sendmessage", parameters: parameters as! [String : AnyObject])
     }
     func sendDatatoNode_String(openMRS_uuid: String, snomed_code: String, loinc_code:String, concept_name:String, concept_unit:String, concept_value:AnyObject) {
         
@@ -859,20 +889,24 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBAction func sync(sender: AnyObject) {
         // Send HTTP GET Request
         
+        getObs()
+        
+        /*
         //**SEND DATA TO NODEjs**//
         //Send Daily Steps 
         
         if(self.todayStepsValue != 0.0) {
-            sendDatatoNode_Numerical(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, concept_value: self.todayStepsValue)}
+            sendDatatoNode_Numerical(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, date: self.todayStepsDate, concept_value: self.todayStepsValue)}
         
         //Send Average Steps
         if(self.averageStepsValue != 0.0) {
-            sendDatatoNode_Numerical(self.average_steps_uuid, snomed_code: self.average_steps_snomed, loinc_code: self.average_steps_loinc, concept_name: self.average_steps_name, concept_unit: self.average_steps_unit, concept_value: self.averageStepsValue)}
+            sendDatatoNode_Numerical(self.average_steps_uuid, snomed_code: self.average_steps_snomed, loinc_code: self.average_steps_loinc, concept_name: self.average_steps_name, concept_unit: self.average_steps_unit, date: self.todayStepsDate ,concept_value: self.averageStepsValue)}
         
         //Send Active Energy
         if(self.todayActiveEnergy != 0.0) {
-            sendDatatoNode_Numerical(self.active_energy_uuid, snomed_code: self.active_energy_snomed, loinc_code: self.active_energy_loinc, concept_name: self.active_energy_name, concept_unit: self.active_energy_unit, concept_value: self.todayActiveEnergy)}
+            sendDatatoNode_Numerical(self.active_energy_uuid, snomed_code: self.active_energy_snomed, loinc_code: self.active_energy_loinc, concept_name: self.active_energy_name, concept_unit: self.active_energy_unit, date: self.todayStepsDate, concept_value: self.todayActiveEnergy)}
 
+        
         //Send Date of Birth
         if(self.birthdateValue != "Not enough data/Unauthorized") {
             sendDatatoNode_String(self.date_of_birth_uuid, snomed_code: self.date_of_birth_snomed, loinc_code: self.date_of_birth_loinc, concept_name: self.date_of_birth_name, concept_unit: self.date_of_birth_unit, concept_value: self.birthdateValue)}
@@ -901,6 +935,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         //Send BMI
         if(self.bmiValue != "Not enough data/Unauthorized" && self.bmiValue != "inf") {
             sendDatatoNode_Numerical(self.bmi_uuid, snomed_code: self.bmi_snomed, loinc_code: self.bmi_loinc, concept_name: self.bmi_name, concept_unit: self.bmi_unit, concept_value: self.bmiValue)}
+        */
     }
 
 }
