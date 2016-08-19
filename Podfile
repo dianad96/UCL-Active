@@ -4,4 +4,5 @@ use_frameworks!
 
 target 'uclactive' do
 pod 'Alamofire', '~> 3.4'
+pod 'SwiftyJSON'
 end

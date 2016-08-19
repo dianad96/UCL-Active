@@ -9,6 +9,7 @@ import UIKit
 import HealthKit
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 struct Recipe {
     var name: String
@@ -740,13 +741,13 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
        Alamofire
         .request(.GET, "http://uclactiveserver.westeurope.cloudapp.azure.com:8080/openmrs/ws/fhir/Observation?date="+self.todayStepsDate+"T00:00:00", headers: headers)
         .responseJSON { response in
-            print(response.request)  // original URL request
-            print(response.response) // URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
-            
-            if let JSON = response.result.value {
-                print("JSON: \(JSON)")
+            var json = JSON(response.result.value!)
+            var i = 0
+            while (json["entry"][i]["resource"]["valueQuantity"]["value"] != nil) {
+                print("Observation: ", json["entry"][i]["resource"]["code"]["coding"][0]["display"])
+                print("Date: ", json["entry"][i]["resource"]["issued"])
+                print("Value: ", json["entry"][i]["resource"]["valueQuantity"]["value"])
+                i=i+1
             }
         }
     }
