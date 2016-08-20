@@ -33,7 +33,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     var bmi: HKQuantitySample?
     
     //checking
-    var ok_today: Int = 0
+    var ok: Int = 0
     
     //openMRS 
     var person_uuid: String = "85511527-6223-11e6-a4f9-000d3a23bb00"
@@ -758,7 +758,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
                     let patientAux: String = "Patient/"+self.person_uuid
                     if (json["entry"][i]["resource"]["subject"]["reference"].rawString() == patientAux){
                         print("&&&&&&")
-                        self.ok_today = self.ok_today+1
+                        self.ok = self.ok+1
                     }
                 }
                 i=i+1
@@ -766,6 +766,68 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             //code is done, now call the callback
             callback()
         }
+    }
+    
+    // Get data directly from openMRS (not calling node)
+    // Checks if the user synced for today. If he has, nothing happens. If not, the value is saved
+    func checkYesterday(concept: String, callback: () -> ()) {
+        
+        let user = "nodejs"
+        let password = "[]Uclactive15"
+        
+        let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+        
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
+        Alamofire
+            .request(.GET, "http://uclactiveserver.westeurope.cloudapp.azure.com:8080/openmrs/ws/fhir/Observation?date="+self.yesterdayStepsDate+"T00:00:00", headers: headers)
+            .responseJSON { response in
+                var json = JSON(response.result.value!)
+                var i = 0
+                if(json["total"] == 0){ //if there is no value registered for the previous day, add one
+                    print ("The json is null")
+                    self.ok = self.ok + 1
+                }
+                while (json["entry"][i]["resource"]["valueQuantity"]["value"] != nil) {
+                    print("Observation: ", json["entry"][i]["resource"]["code"]["coding"][0]["display"])
+                    print("Date: ", json["entry"][i]["resource"]["issued"])
+                    print("Value: ", json["entry"][i]["resource"]["valueQuantity"]["value"])
+                    print("Patient: ", json["entry"][i]["resource"]["subject"]["reference"])
+                    print ("uuid ", json["entry"][i]["resource"]["id"])
+                    
+                    // Checks if the user synced his data for previous day
+                    if (json["entry"][i]["resource"]["code"]["coding"][0]["display"].rawString() == concept){
+                        print ("@@@@@@@@@@")
+                        let patientAux: String = "Patient/"+self.person_uuid
+                        if (json["entry"][i]["resource"]["subject"]["reference"].rawString() == patientAux){
+                            print("&&&&&&")
+                            if(Double(json["entry"][i]["resource"]["valueQuantity"]["value"].rawString()!)<self.yesterdayStepsValue){
+                                print (">>>>>HEREEE<<<<")
+                                // SHOULD UPDATE THE VALUE
+                                // delete value here
+                                self.deleteObs(json["entry"][i]["resource"]["id"].rawString()!) {
+                                    self.ok = self.ok + 1
+                                }
+                            }
+                            if(json["entry"][i]["resource"]["valueQuantity"]["value"]==nil){
+                                print("NIL VALUE<<<<<")
+                            }
+                        }
+                    }
+                    i=i+1
+                }
+                //code is done, now call the callback
+                callback()
+        }
+    }
+    
+    // Deleting the Obs
+    func deleteObs(uuid: String, callback: () -> ()) {
+        let url: String = "http://uclactiveserver.westeurope.cloudapp.azure.com:8080/openmrs/ws/fhir/Observation/"+uuid;
+        let parameters = ["url": url]
+        Alamofire.request(.POST, "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/deleteObs", parameters: parameters)
+        callback()
     }
     
     func sendDatatoNode_Numerical(openMRS_uuid: String, snomed_code: String, loinc_code:String, concept_name:String, concept_unit:String, date: String, concept_value:AnyObject) {
@@ -910,12 +972,18 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         //**SEND DATA TO NODEjs**//
         //Send Daily Steps 
         
-        self.ok_today = 0
+        self.ok = 0
         checkToday("Daily Steps") {
-            if (self.ok_today == 0) {
+            if (self.ok == 0) {
                 if(self.todayStepsValue != 0.0) {
                     self.sendDatatoNode_Numerical(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, date: self.todayStepsDate, concept_value: self.todayStepsValue)
                 }
+            }
+        }
+        self.ok = 0
+        checkYesterday("Daily Steps") {
+            if (self.ok != 0) {
+                self.sendDatatoNode_Numerical(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, date: self.yesterdayStepsDate, concept_value: self.yesterdayStepsValue)
             }
         }
         
