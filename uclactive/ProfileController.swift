@@ -131,10 +131,13 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     var yesterdayStepsValue: Double = 0.0
     var averageStepsValue: Double = 0.0
     var todayActiveEnergy: Double = 0.0
+    var yesterdayActiveEnergy: Double = 0.0
 
     // Date
     var todayStepsDate: String = ""
     var yesterdayStepsDate: String = ""
+    var todayActiveEnergyDate: String = ""
+    var yesterdayActiveEnergyDate: String = ""
     
     //Outlet properties
     @IBOutlet weak var headerView: UIView!
@@ -603,12 +606,59 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             
             dispatch_async(dispatch_get_main_queue()) {
                 
+                var dateAux: NSDate = startDate!
+                var dateAux2: NSDate = startDate!
+                
+                //Find Today's Active Energy
                 for activity in results as! [HKQuantitySample]
                 {
-                    self.todayActiveEnergy = activity.quantity.doubleValueForUnit(HKUnit.kilocalorieUnit())
-                    print(">>>>>", self.todayActiveEnergy)
+                    //self.todayActiveEnergy = activity.quantity.doubleValueForUnit(HKUnit.kilocalorieUnit())
+                    print("????", activity.startDate, "  ", self.todayActiveEnergy)
+                    
+                    switch activity.startDate.compare(dateAux) {
+                    case .OrderedDescending:
+                        dateAux = activity.startDate
+                        self.todayActiveEnergy =  activity.quantity.doubleValueForUnit(HKUnit.kilocalorieUnit())
+                        print (dateAux, " < ", activity.startDate, "   ", self.todayActiveEnergy )
+                    default:
+                        break
+                    }
+                    self.todayActiveEnergyDate = String(dateAux)
                 }
+                print ("ACTIVE ENERGY DATE: ", self.todayActiveEnergyDate, "   ", self.todayActiveEnergy)
                 
+                print (">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+                
+                for activity in results as! [HKQuantitySample]
+                {
+                    
+                    // Getting yesterday registered steps
+                    switch activity.startDate.compare(dateAux2) { // find greatest value
+                    case .OrderedDescending:
+                        print ("*** ", activity.startDate, " > ", dateAux2)
+                        switch activity.startDate.compare(dateAux) { // value less than today
+                        case .OrderedAscending:
+                            print (dateAux2, " < ", dateAux)
+                            dateAux2 = activity.startDate
+                            self.yesterdayActiveEnergy = activity.quantity.doubleValueForUnit(HKUnit.kilocalorieUnit())
+                            print ("new value: ", dateAux2, " ", self.yesterdayActiveEnergy)
+                        default : break
+                        }
+                    default: break
+                    }
+                    self.yesterdayActiveEnergyDate = String(dateAux2)
+                }
+                  print ("ACTIVE ENERGY DATE: ", self.yesterdayActiveEnergyDate, "   ", self.yesterdayActiveEnergy)
+                
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+                dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                self.yesterdayActiveEnergyDate = dateFormatter.stringFromDate(dateAux2)
+                self.todayActiveEnergyDate = dateFormatter.stringFromDate(dateAux)
+                
+                print ("Yesterday active energy: ", self.yesterdayActiveEnergy, " ", self.yesterdayActiveEnergyDate)
+                print ("Today active energy: ", self.todayActiveEnergy, " ", self.todayActiveEnergyDate)
             }
         })
         self.healthKitStore.executeQuery(query)
@@ -731,7 +781,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     // Get data directly from openMRS (not calling node)
     // Checks if the user synced for today. If he has, nothing happens. If not, the value is saved
-    func checkToday(concept: String, callback: () -> ()) {
+    func checkToday(concept: String, date:String, callback: () -> ()) {
         
         let user = "nodejs"
         let password = "[]Uclactive15"
@@ -742,7 +792,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         let headers = ["Authorization": "Basic \(base64Credentials)"]
         
        Alamofire
-        .request(.GET, "http://uclactiveserver.westeurope.cloudapp.azure.com:8080/openmrs/ws/fhir/Observation?date="+self.todayStepsDate+"T00:00:00", headers: headers)
+        .request(.GET, "http://uclactiveserver.westeurope.cloudapp.azure.com:8080/openmrs/ws/fhir/Observation?date="+date+"T00:00:00", headers: headers)
         .responseJSON { response in
             var json = JSON(response.result.value!)
             var i = 0
@@ -770,7 +820,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // Get data directly from openMRS (not calling node)
     // Checks if the user synced for today. If he has, nothing happens. If not, the value is saved
-    func checkYesterday(concept: String, callback: () -> ()) {
+    func checkYesterday(concept: String, date: String, value: Double, callback: () -> ()) {
         
         let user = "nodejs"
         let password = "[]Uclactive15"
@@ -781,10 +831,11 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         let headers = ["Authorization": "Basic \(base64Credentials)"]
         
         Alamofire
-            .request(.GET, "http://uclactiveserver.westeurope.cloudapp.azure.com:8080/openmrs/ws/fhir/Observation?date="+self.yesterdayStepsDate+"T00:00:00", headers: headers)
+            .request(.GET, "http://uclactiveserver.westeurope.cloudapp.azure.com:8080/openmrs/ws/fhir/Observation?date="+date+"T00:00:00", headers: headers)
             .responseJSON { response in
                 var json = JSON(response.result.value!)
                 var i = 0
+                self.ok = 0
                 if(json["total"] == 0){ //if there is no value registered for the previous day, add one
                     print ("The json is null")
                     self.ok = self.ok + 1
@@ -802,7 +853,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
                         let patientAux: String = "Patient/"+self.person_uuid
                         if (json["entry"][i]["resource"]["subject"]["reference"].rawString() == patientAux){
                             print("&&&&&&")
-                            if(Double(json["entry"][i]["resource"]["valueQuantity"]["value"].rawString()!)<self.yesterdayStepsValue){
+                            if(Double(json["entry"][i]["resource"]["valueQuantity"]["value"].rawString()!)<value){
                                 print (">>>>>HEREEE<<<<")
                                 // SHOULD UPDATE THE VALUE
                                 // delete value here
@@ -973,7 +1024,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         //Send Daily Steps 
         
         self.ok = 0
-        checkToday("Daily Steps") {
+        checkToday("Daily Steps", date: self.todayStepsDate) {
             if (self.ok == 0) {
                 if(self.todayStepsValue != 0.0) {
                     self.sendDatatoNode_Numerical(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, date: self.todayStepsDate, concept_value: self.todayStepsValue)
@@ -981,7 +1032,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
         }
         self.ok = 0
-        checkYesterday("Daily Steps") {
+        checkYesterday("Daily Steps", date: self.yesterdayStepsDate, value:self.yesterdayStepsValue) {
             if (self.ok != 0) {
                 self.sendDatatoNode_Numerical(self.daily_steps_uuid, snomed_code: self.daily_steps_snomed, loinc_code: self.daily_steps_loinc, concept_name: self.daily_steps_name, concept_unit: self.daily_steps_unit, date: self.yesterdayStepsDate, concept_value: self.yesterdayStepsValue)
             }
@@ -992,11 +1043,28 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         if(self.averageStepsValue != 0.0) {
             sendDatatoNode_Numerical(self.average_steps_uuid, snomed_code: self.average_steps_snomed, loinc_code: self.average_steps_loinc, concept_name: self.average_steps_name, concept_unit: self.average_steps_unit, date: self.todayStepsDate ,concept_value: self.averageStepsValue)}
         
+        */
+        
+        
         //Send Active Energy
         if(self.todayActiveEnergy != 0.0) {
-            sendDatatoNode_Numerical(self.active_energy_uuid, snomed_code: self.active_energy_snomed, loinc_code: self.active_energy_loinc, concept_name: self.active_energy_name, concept_unit: self.active_energy_unit, date: self.todayStepsDate, concept_value: self.todayActiveEnergy)}
+            self.ok = 0
+            checkToday("Active Energy", date: self.todayActiveEnergyDate) {
+                if (self.ok == 0) {
+                    if(self.todayActiveEnergy != 0.0) {
+                        self.sendDatatoNode_Numerical(self.active_energy_uuid, snomed_code: self.active_energy_snomed, loinc_code: self.active_energy_loinc, concept_name: self.active_energy_name, concept_unit: self.active_energy_unit, date: self.todayActiveEnergyDate, concept_value: self.todayActiveEnergy)
+                    }
+                }
+            }
+            self.ok = 0
+            checkYesterday("Active Energy", date: self.yesterdayActiveEnergyDate, value: self.yesterdayActiveEnergy) {
+                if (self.ok != 0) {
+                    self.sendDatatoNode_Numerical(self.active_energy_uuid, snomed_code: self.active_energy_snomed, loinc_code: self.active_energy_loinc, concept_name: self.active_energy_name, concept_unit: self.active_energy_unit, date: self.yesterdayActiveEnergyDate, concept_value: self.yesterdayActiveEnergy)
+                }
+            }
+        }
 
-        
+        /*
         //Send Date of Birth
         if(self.birthdateValue != "Not enough data/Unauthorized") {
             sendDatatoNode_String(self.date_of_birth_uuid, snomed_code: self.date_of_birth_snomed, loinc_code: self.date_of_birth_loinc, concept_name: self.date_of_birth_name, concept_unit: self.date_of_birth_unit, concept_value: self.birthdateValue)}
