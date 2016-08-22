@@ -121,7 +121,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Postal Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XzO-L9-vBO">
-                                <rect key="frame" x="20" y="264" width="280" height="30"/>
+                                <rect key="frame" x="20" y="302" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -131,27 +131,33 @@
                                 <items>
                                     <navigationItem title="Register" id="ntD-Xw-nQk">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="1q8-2t-NFK"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Done" id="6fK-7M-CVB">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="ytH-a0-ZiV">
                                             <connections>
-                                                <action selector="sendData:" destination="cN0-g3-1PJ" id="EFR-l4-UUD"/>
+                                                <action selector="getuuid:" destination="cN0-g3-1PJ" id="dvy-98-QjR"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthdate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h7r-Pd-P5x">
-                                <rect key="frame" x="20" y="226" width="280" height="30"/>
+                                <rect key="frame" x="20" y="264" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="textFieldEditing:" destination="cN0-g3-1PJ" eventType="editingDidBegin" id="HvO-2P-r1J"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3fu-iz-fjy">
+                                <rect key="frame" x="20" y="226" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.94768488220000002" green="0.94768488220000002" blue="0.94768488220000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="birthdate" destination="h7r-Pd-P5x" id="pc2-SB-alX"/>
+                        <outlet property="email" destination="3fu-iz-fjy" id="bM1-U4-GX6"/>
                         <outlet property="familyName" destination="SeN-sY-ulM" id="e36-ga-LTz"/>
                         <outlet property="givenName" destination="b73-k5-vDI" id="jp0-dx-B0u"/>
                         <outlet property="postalcode" destination="XzO-L9-vBO" id="xWF-Tk-cMT"/>

@@ -6,23 +6,30 @@
 //  Copyright © 2016 Diana Darie. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Foundation
 import Alamofire
+import SwiftyJSON
+
 
 class RegisterController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var postalcode: UITextField!
     @IBOutlet weak var birthdate: UITextField!
+    @IBOutlet weak var email: UITextField!
     @IBOutlet weak var sex: UITextField!
     @IBOutlet weak var familyName: UITextField!
     @IBOutlet weak var givenName: UITextField!
     let identif: String = String(arc4random_uniform(5000))
     
-    
+    var device_udid: String = "";
+    var uuid: String = "";
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("DEVICE UDID: ", UIDevice.currentDevice().identifierForVendor!.UUIDString)
+        self.device_udid = UIDevice.currentDevice().identifierForVendor!.UUIDString;
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -38,6 +45,33 @@ class RegisterController: UIViewController, UIPickerViewDataSource, UIPickerView
          */
     }
     
+    @IBAction func getuuid(sender: AnyObject) {
+        
+        
+        sendData() { // <-- creating the patient
+            
+            // <--getting the uuid knowing the identifier
+            let user = "nodejs"
+            let password = "[]Uclactive15"
+            
+            let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+            let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+            
+            let headers = ["Authorization": "Basic \(base64Credentials)"]
+            
+            let url: String = "http://uclactiveserver.westeurope.cloudapp.azure.com:8080/openmrs/ws/fhir/Patient?identifier="+self.identif
+            
+            Alamofire
+                .request(.GET, url, headers: headers)
+                .responseJSON { response in
+                    var json = JSON(response.result.value!)
+                    self.uuid = String(json["entry"][0]["resource"]["id"])
+                    print("Patient uuid: ", self.uuid)
+            }
+        }
+    }
+    
+    
     //Looks for single or multiple taps.
     @IBAction func textFieldEditing(sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
@@ -45,6 +79,75 @@ class RegisterController: UIViewController, UIPickerViewDataSource, UIPickerView
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(RegisterController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
     }
+    
+    
+    
+    func sendData(callback: () -> ()) {
+        
+        print(self.givenName.text)
+        print(self.familyName.text)
+        print(self.sex.text)
+        print(self.birthdate.text)
+        print(self.postalcode.text)
+        print(self.identif)
+        
+        let givenName: String = self.givenName.text!
+        let familyName: String = self.familyName.text!
+        let sex: String = self.sex.text!
+        let birthdate: String = self.birthdate.text!
+        let postalcode: String = self.postalcode.text!
+        
+        //**SEND DATA TO NODE SERVER**//
+        let parameters = [
+            "resourceType": "Patient",
+            "identifier": [
+                [
+                    "use":"usual",
+                    "system":"Old Identification Number",
+                    "value":self.identif
+                ]
+            ],
+            "name": [
+                [
+                    "use":"usual",
+                    "family":[
+                        familyName
+                    ],
+                    "given":[
+                        givenName
+                    ]
+                ]
+            ],
+            "gender":sex,
+            "birthdate":birthdate,
+            "deceasedBoolean":"false",
+            "address":[
+                [
+                    "use":"home",
+                    "postal code":postalcode,
+                    "country":"United Kingdom"
+                ]
+            ],
+            "active":"true"
+            
+        ]
+        
+        print (parameters)
+        
+        Alamofire
+            .request(.POST, "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/createUser", parameters: parameters as! [String : AnyObject])
+            .responseJSON {response in
+                //code is done, now call the callback
+                callback()
+        }
+        
+
+        
+    }
+
+    
+    
+    
     
     
     func datePickerValueChanged(sender:UIDatePicker) {
@@ -102,59 +205,4 @@ class RegisterController: UIViewController, UIPickerViewDataSource, UIPickerView
             }
         }
     }
-    
-    @IBAction func sendData(sender: AnyObject) {
-        print(self.givenName.text)
-        print(self.familyName.text)
-        print(self.sex.text)
-        print(self.birthdate.text)
-        print(self.postalcode.text)
-        print(self.identif)
-        
-        let givenName: String = self.givenName.text!
-        let familyName: String = self.familyName.text!
-        let sex: String = self.sex.text!
-        let birthdate: String = self.birthdate.text!
-        let postalcode: String = self.postalcode.text!
-        
-        //**SEND DATA TO NODE SERVER**//
-        let parameters = [
-            "resourceType": "Patient",
-            "identifier": [
-                [
-                    "use":"usual",
-                    "system":"Old Identification Number",
-                    "value":self.identif
-                ]
-            ],
-            "name": [
-                [
-                    "use":"usual",
-                    "family":[
-                        familyName
-                    ],
-                    "given":[
-                        givenName
-                    ]
-                ]
-            ],
-            "gender":sex,
-            "birthdate":birthdate,
-            "deceasedBoolean":"false",
-            "address":[
-                [
-                    "use":"home",
-                    "postal code":postalcode,
-                    "country":"United Kingdom"
-                ]
-            ],
-            "active":"true"
-            
-        ]
-        
-        print (parameters)
-        
-        Alamofire.request(.POST, "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/createUser", parameters: parameters as! [String : AnyObject])
-    }
-    
 }

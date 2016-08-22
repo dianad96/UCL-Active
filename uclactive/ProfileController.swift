@@ -31,7 +31,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
     let healthManager: HealthKitManager = HealthKitManager()
     var height: HKQuantitySample?
     var bmi: HKQuantitySample?
-    
+
     //checking
     var ok: Int = 0
     
@@ -1094,6 +1094,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         if(self.bmiValue != "Not enough data/Unauthorized" && self.bmiValue != "inf") {
             sendDatatoNode_Numerical(self.bmi_uuid, snomed_code: self.bmi_snomed, loinc_code: self.bmi_loinc, concept_name: self.bmi_name, concept_unit: self.bmi_unit, concept_value: self.bmiValue)}
         */
+        
+        
     }
 
 }
