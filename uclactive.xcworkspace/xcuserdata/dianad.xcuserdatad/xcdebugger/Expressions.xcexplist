@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "RegisterController.(getuuid(() -&gt; ()) -&gt; ()).(closure #1).(closure #1):RegisterController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.uuid">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ProfileController.(sync(AnyObject) -&gt; ()).(closure #2):ProfileController.swift">
          <PersistentStrings>
             <PersistentString
@@ -49,6 +57,14 @@
             </PersistentString>
             <PersistentString
                value = "uuid">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RegisterController.(saveToNode() -&gt; ()).(closure #1):RegisterController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.uuid">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

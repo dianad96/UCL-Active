@@ -45,7 +45,7 @@ class RegisterController: UIViewController, UIPickerViewDataSource, UIPickerView
          */
     }
     
-    @IBAction func getuuid(sender: AnyObject) {
+    func getuuid(callback: () -> ()) {
         
         
         sendData() { // <-- creating the patient
@@ -67,6 +67,7 @@ class RegisterController: UIViewController, UIPickerViewDataSource, UIPickerView
                     var json = JSON(response.result.value!)
                     self.uuid = String(json["entry"][0]["resource"]["id"])
                     print("Patient uuid: ", self.uuid)
+                    callback()
             }
         }
     }
@@ -140,11 +141,34 @@ class RegisterController: UIViewController, UIPickerViewDataSource, UIPickerView
                 //code is done, now call the callback
                 callback()
         }
-        
 
-        
     }
 
+    
+    @IBAction func saveToNode() {
+        
+        getuuid() {
+            let givenName: String = self.givenName.text!
+            let familyName: String = self.familyName.text!
+            let email: String = self.email.text!
+            
+            //**SEND DATA TO NODE SERVER**//
+            let parameters = [
+                "givenName": givenName,
+                "familyName": familyName,
+                "email": email,
+                "openMRS_uuid": self.uuid,
+                "device_udid": self.device_udid
+            ]
+            
+            print (parameters)
+            
+            Alamofire
+                .request(.POST, "http://uclactiveserver.westeurope.cloudapp.azure.com:3001/saveUser", parameters: parameters as! [String : String])
+                .responseJSON {response in
+            }
+        }
+    }
     
     
     

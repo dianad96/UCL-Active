@@ -131,9 +131,9 @@
                                 <items>
                                     <navigationItem title="Register" id="ntD-Xw-nQk">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="1q8-2t-NFK"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Done" id="ytH-a0-ZiV">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="v2O-Jl-wHQ">
                                             <connections>
-                                                <action selector="getuuid:" destination="cN0-g3-1PJ" id="dvy-98-QjR"/>
+                                                <action selector="saveToNode" destination="cN0-g3-1PJ" id="k8V-LK-ifE"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
