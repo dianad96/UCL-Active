@@ -39,134 +39,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "uclactive/ProfileController.swift"
-            timestampString = "493554665.585176"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "856"
-            endingLineNumber = "856"
-            landmarkName = "checkYesterday(_:date:value:callback:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uclactive/ProfileController.swift"
-            timestampString = "493554668.283681"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "860"
-            endingLineNumber = "860"
-            landmarkName = "checkYesterday(_:date:value:callback:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "uclactive.ProfileController.(checkYesterday (Swift.String, date : Swift.String, value : Swift.Double, callback : () -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "uclactive"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/ProfileController.swift"
-                  timestampString = "493572443.161208"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "860"
-                  endingLineNumber = "860"
-                  offsetFromSymbolStart = "31860">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "uclactive.ProfileController.(checkYesterday (Swift.String, date : Swift.String, value : Swift.Double, callback : () -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "uclactive"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/ProfileController.swift"
-                  timestampString = "493572443.161355"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "861"
-                  endingLineNumber = "861"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uclactive/ProfileController.swift"
-            timestampString = "493555246.508011"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1035"
-            endingLineNumber = "1035"
-            landmarkName = "sync(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "uclactive.ProfileController.sync (Swift.AnyObject) -&gt; ()"
-                  moduleName = "uclactive"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/ProfileController.swift"
-                  timestampString = "493572443.170759"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1035"
-                  endingLineNumber = "1035"
-                  offsetFromSymbolStart = "352">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "uclactive.ProfileController.(sync (Swift.AnyObject) -&gt; ()).(closure #2)"
-                  moduleName = "uclactive"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/ProfileController.swift"
-                  timestampString = "493572443.171758"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1036"
-                  endingLineNumber = "1036"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uclactive/ProfileController.swift"
-            timestampString = "493555576.122961"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "855"
-            endingLineNumber = "855"
-            landmarkName = "checkYesterday(_:date:value:callback:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "uclactive/RegisterController.swift"
             timestampString = "493572063.034547"
             startingColumnNumber = "9223372036854775807"
@@ -222,6 +94,22 @@
             startingLineNumber = "69"
             endingLineNumber = "69"
             landmarkName = "getuuid(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uclactive/ProfileController.swift"
+            timestampString = "493715305.111088"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "962"
+            endingLineNumber = "962"
+            landmarkName = "sendData(_:snomedCode:observationDisplay:observationValue:observationUnit:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

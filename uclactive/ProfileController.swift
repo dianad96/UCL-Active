@@ -1021,7 +1021,8 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
         //**SEND DATA TO NODEjs**//
-        //Send Daily Steps 
+        //Send Daily Steps
+        self.sendData("Daily Steps", snomedCode: self.daily_steps_snomed, observationDisplay: "Daily Steps", observationValue: String(self.todayStepsValue), observationUnit: self.daily_steps_unit)
         
         self.ok = 0
         checkToday("Daily Steps", date: self.todayStepsDate) {
@@ -1038,16 +1039,18 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
         }
         
-        /*
+        
         //Send Average Steps
         if(self.averageStepsValue != 0.0) {
-            sendDatatoNode_Numerical(self.average_steps_uuid, snomed_code: self.average_steps_snomed, loinc_code: self.average_steps_loinc, concept_name: self.average_steps_name, concept_unit: self.average_steps_unit, date: self.todayStepsDate ,concept_value: self.averageStepsValue)}
+            sendDatatoNode_Numerical(self.average_steps_uuid, snomed_code: self.average_steps_snomed, loinc_code: self.average_steps_loinc, concept_name: self.average_steps_name, concept_unit: self.average_steps_unit, date: self.todayStepsDate, concept_value: self.averageStepsValue)
+            self.sendData("Average Steps", snomedCode: self.average_steps_snomed, observationDisplay: "Average Steps", observationValue: String(self.averageStepsValue), observationUnit: self.average_steps_unit)
+        }
         
-        */
         
         
         //Send Active Energy
         if(self.todayActiveEnergy != 0.0) {
+            self.sendData("Active Steps", snomedCode: self.active_energy_snomed, observationDisplay:"Active Energy", observationValue: String(self.todayActiveEnergy), observationUnit: self.active_energy_unit)
             self.ok = 0
             checkToday("Active Energy", date: self.todayActiveEnergyDate) {
                 if (self.ok == 0) {
@@ -1064,36 +1067,43 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
         }
 
-        /*
+        
         //Send Date of Birth
         if(self.birthdateValue != "Not enough data/Unauthorized") {
+            self.sendData("Birthdate", snomedCode: self.date_of_birth_snomed, observationDisplay: "Birthdate", observationValue: String(self.birthdateValue), observationUnit: self.date_of_birth_unit)
             sendDatatoNode_String(self.date_of_birth_uuid, snomed_code: self.date_of_birth_snomed, loinc_code: self.date_of_birth_loinc, concept_name: self.date_of_birth_name, concept_unit: self.date_of_birth_unit, concept_value: self.birthdateValue)}
         
         //Send Sex
         if(self.sexValue != "Not enough data/Unauthorized") {
+            self.sendData("Sex", snomedCode: self.sex_snomed, observationDisplay: "Sex", observationValue: String(self.sexValue), observationUnit: self.sex_unit)
             sendDatatoNode_String(self.sex_uuid, snomed_code: self.sex_snomed, loinc_code: self.sex_loinc, concept_name: self.sex_name, concept_unit: self.sex_unit, concept_value: self.sexValue)}
         
         //Send Blood Type
         if(self.bloodTypeValue != "Not enough data/Unauthorized") {
+            self.sendData("Blood Type", snomedCode: self.blood_type_snomed, observationDisplay: "Blood Type", observationValue: String(self.bloodTypeValue), observationUnit: self.blood_type_unit)
             sendDatatoNode_String(self.blood_type_uuid, snomed_code: self.blood_type_snomed, loinc_code: self.blood_type_loinc, concept_name: self.blood_type_name, concept_unit: self.blood_type_unit, concept_value: self.bloodTypeValue)}
         
         //Send Skin Type
         if(self.skinType != "Not enough data/Unauthorized") {
+            self.sendData("Skin Type", snomedCode: self.skin_type_snomed, observationDisplay: "Skin Type", observationValue: String(self.skinType), observationUnit: self.skin_type_unit)
             sendDatatoNode_String(self.skin_type_uuid, snomed_code: self.skin_type_snomed, loinc_code: self.skin_type_loinc, concept_name: self.skin_type_name, concept_unit: self.skin_type_unit, concept_value: self.skinType)}
         
         
         //Send Height
         if(self.height != "Not enough data/Unauthorized") {
-            sendDatatoNode_Numerical(self.height_uuid, snomed_code: self.height_snomed, loinc_code: self.height_loinc, concept_name: self.height_name, concept_unit: self.height_unit, concept_value: self.height!)}
+            self.sendData("Height", snomedCode: self.height_snomed, observationDisplay: "Height", observationValue: String(self.height), observationUnit: self.height_unit)
+            sendDatatoNode_Numerical(self.height_uuid, snomed_code: self.height_snomed, loinc_code: self.height_loinc, concept_name: self.height_name, concept_unit: self.height_unit, date:self.todayActiveEnergyDate, concept_value: self.height!)}
             
         //Send Weight
         if(self.weightValue != "Not enough data/Unauthorized") {
-            sendDatatoNode_Numerical(self.weight_uuid, snomed_code: self.weight_snomed, loinc_code: self.weight_loinc, concept_name: self.weight_name, concept_unit: self.weight_unit, concept_value: self.weightValue)}
+            self.sendData("Weight", snomedCode: self.weight_snomed, observationDisplay: "Weight", observationValue: String(self.weightValue), observationUnit: self.weight_unit)
+            sendDatatoNode_Numerical(self.weight_uuid, snomed_code: self.weight_snomed, loinc_code: self.weight_loinc, concept_name: self.weight_name, concept_unit: self.weight_unit, date:self.todayActiveEnergyDate, concept_value: self.weightValue)}
         
         //Send BMI
         if(self.bmiValue != "Not enough data/Unauthorized" && self.bmiValue != "inf") {
-            sendDatatoNode_Numerical(self.bmi_uuid, snomed_code: self.bmi_snomed, loinc_code: self.bmi_loinc, concept_name: self.bmi_name, concept_unit: self.bmi_unit, concept_value: self.bmiValue)}
-        */
+            self.sendData("BMI", snomedCode: self.bmi_snomed, observationDisplay: "BMI", observationValue: String(self.bmiValue), observationUnit: self.bmi_unit)
+            sendDatatoNode_Numerical(self.bmi_uuid, snomed_code: self.bmi_snomed, loinc_code: self.bmi_loinc, concept_name: self.bmi_name, concept_unit: self.bmi_unit, date:self.todayActiveEnergyDate, concept_value: self.bmiValue)}
+        
         
         
     }
