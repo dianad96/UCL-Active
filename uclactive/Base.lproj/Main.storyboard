@@ -84,6 +84,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="NBB-Ch-U34"/>
+                    <navigationItem key="navigationItem" id="deS-Qu-FYs"/>
                     <connections>
                         <outlet property="button" destination="Krb-Jm-eNs" id="Ek9-fY-Cxf"/>
                         <outlet property="button2" destination="cax-6c-iH9" id="X9x-Dc-XP6"/>
@@ -130,10 +131,15 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="Register" id="ntD-Xw-nQk">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="1q8-2t-NFK"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="1q8-2t-NFK">
+                                            <connections>
+                                                <segue destination="9pv-A4-QxB" kind="modal" id="nvu-jp-IZs"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="v2O-Jl-wHQ">
                                             <connections>
                                                 <action selector="saveToNode" destination="cN0-g3-1PJ" id="k8V-LK-ifE"/>
+                                                <segue destination="0A9-bM-WUG" kind="modal" id="VYt-Wp-Ic2"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -512,6 +518,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0A9-bM-WUG" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Z2Q-tC-woD"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="tNn-lb-SOL">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
