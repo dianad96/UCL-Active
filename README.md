@@ -5,7 +5,8 @@
 [![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
              )](https://developer.apple.com/swift)
              
-  The Android Version of the project can be found [here] (https://github.com/DianaD96/Team13-OpenMRS)
+  The Android Version of the project can be found [here]. (https://github.com/DianaD96/Team13-OpenMRS)
+  The project documentation can be found [here]. (https://docs.google.com/presentation/d/1W9dJ7MAcYTPxVVggNZBA3EXruDjht_86qOtaWUarwwA/edit?usp=sharing)
 ## The Project
 The purpose of the project is to develop a UCL data store, to aggregate and manage fitness and lifestyle data submitted by UCL staff and students.
 UCL will protect the anonymity of the contributors and will have oversight of the ways in which this growing data set will be used to further research in digital health analytics.
