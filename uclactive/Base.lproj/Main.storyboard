@@ -139,7 +139,6 @@
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="v2O-Jl-wHQ">
                                             <connections>
                                                 <action selector="saveToNode" destination="cN0-g3-1PJ" id="k8V-LK-ifE"/>
-                                                <segue destination="0A9-bM-WUG" kind="modal" id="VYt-Wp-Ic2"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

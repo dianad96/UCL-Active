@@ -113,5 +113,117 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uclactive/RegisterController.swift"
+            timestampString = "493846308.889797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "saveToNode()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "uclactive.RegisterController.saveToNode () -&gt; ()"
+                  moduleName = "uclactive"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/RegisterController.swift"
+                  timestampString = "493846707.421018"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "150"
+                  endingLineNumber = "150"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "uclactive.RegisterController.(saveToNode () -&gt; ()).(closure #1)"
+                  moduleName = "uclactive"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/RegisterController.swift"
+                  timestampString = "493846707.421216"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uclactive/RegisterController.swift"
+            timestampString = "493846314.55975"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "getuuid(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "uclactive.RegisterController.getuuid (() -&gt; ()) -&gt; ()"
+                  moduleName = "uclactive"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/RegisterController.swift"
+                  timestampString = "493846707.422705"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "uclactive.RegisterController.(getuuid (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "uclactive"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/RegisterController.swift"
+                  timestampString = "493846707.422971"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uclactive/RegisterController.swift"
+            timestampString = "493846321.787388"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "sendData(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
