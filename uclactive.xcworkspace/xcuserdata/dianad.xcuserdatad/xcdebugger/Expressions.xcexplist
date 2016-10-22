@@ -3,16 +3,36 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ProfileController.(checkYesterday(String, date : String, value : Double, callback : () -&gt; ()) -&gt; ()).(closure #1):ProfileController.swift">
+         contextName = "ProfileController.(checkYesterday(String, callback : () -&gt; ()) -&gt; ()).(closure #1):ProfileController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "value">
+               value = "json.rawArray()">
             </PersistentString>
             <PersistentString
-               value = "Double(json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;valueQuantity&quot;][&quot;value&quot;].rawString()!)">
+               value = "yesterdayStepsDate">
             </PersistentString>
             <PersistentString
-               value = "self.yesterdayStepsDate">
+               value = "json.rawString==&quot;&quot;">
+            </PersistentString>
+            <PersistentString
+               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;code&quot;][&quot;coding&quot;][0][&quot;display&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;subject&quot;][&quot;reference&quot;].rawString()">
+            </PersistentString>
+            <PersistentString
+               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;valueQuantity&quot;][&quot;value&quot;].rawString()">
+            </PersistentString>
+            <PersistentString
+               value = "json[&quot;entry&quot;][0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RegisterController.(getuuid(() -&gt; ()) -&gt; ()).(closure #1):RegisterController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.identif">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -31,7 +51,7 @@
                value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;valueQuantity&quot;][&quot;value&quot;]">
             </PersistentString>
             <PersistentString
-               value = "date">
+               value = "json[&quot;total&quot;].rawNumber()">
             </PersistentString>
             <PersistentString
                value = "self.yesterdayActiveEnergyDate">
@@ -40,7 +60,7 @@
                value = "self.ok">
             </PersistentString>
             <PersistentString
-               value = "json[&quot;total&quot;].rawNumber()">
+               value = "date">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -108,7 +128,7 @@
          contextName = "ProfileController.sync(AnyObject) -&gt; ():ProfileController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.yesterdayStepsValue">
+               value = "self.ok_today">
             </PersistentString>
             <PersistentString
                value = "self.todayActiveEnergy">
@@ -123,7 +143,7 @@
                value = "self.ok">
             </PersistentString>
             <PersistentString
-               value = "self.ok_today">
+               value = "self.yesterdayStepsValue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -142,7 +162,7 @@
          contextName = "ProfileController.(getObs(JSON) -&gt; ()).(closure #1):ProfileController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;code&quot;][&quot;coding&quot;][0][&quot;display&quot;].rawString == concept">
+               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;subject&quot;][&quot;reference&quot;]">
             </PersistentString>
             <PersistentString
                value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;subject&quot;][&quot;reference&quot;] == aux">
@@ -151,13 +171,16 @@
                value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;code&quot;][&quot;coding&quot;][0][&quot;display&quot;].rawString">
             </PersistentString>
             <PersistentString
-               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;subject&quot;][&quot;reference&quot;]">
+               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;code&quot;][&quot;coding&quot;][0][&quot;display&quot;].rawString == concept">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "RegisterController.(getuuid(() -&gt; ()) -&gt; ()).(closure #1).(closure #1):RegisterController.swift">
          <PersistentStrings>
+            <PersistentString
+               value = "String(json[&quot;entry&quot;][0][&quot;resource&quot;][&quot;id&quot;])">
+            </PersistentString>
             <PersistentString
                value = "self.uuid">
             </PersistentString>
@@ -172,28 +195,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ProfileController.(checkYesterday(String, callback : () -&gt; ()) -&gt; ()).(closure #1):ProfileController.swift">
+         contextName = "ProfileController.(checkYesterday(String, date : String, value : Double, callback : () -&gt; ()) -&gt; ()).(closure #1):ProfileController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "json.rawArray()">
+               value = "value">
             </PersistentString>
             <PersistentString
-               value = "yesterdayStepsDate">
+               value = "self.yesterdayStepsDate">
             </PersistentString>
             <PersistentString
-               value = "json.rawString==&quot;&quot;">
-            </PersistentString>
-            <PersistentString
-               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;code&quot;][&quot;coding&quot;][0][&quot;display&quot;]">
-            </PersistentString>
-            <PersistentString
-               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;subject&quot;][&quot;reference&quot;].rawString()">
-            </PersistentString>
-            <PersistentString
-               value = "json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;valueQuantity&quot;][&quot;value&quot;].rawString()">
-            </PersistentString>
-            <PersistentString
-               value = "json[&quot;entry&quot;][0]">
+               value = "Double(json[&quot;entry&quot;][i][&quot;resource&quot;][&quot;valueQuantity&quot;][&quot;value&quot;].rawString()!)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

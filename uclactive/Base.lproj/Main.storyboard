@@ -107,22 +107,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Given Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b73-k5-vDI">
-                                <rect key="frame" x="20" y="112" width="280" height="30"/>
+                                <rect key="frame" x="20" y="86" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Family Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SeN-sY-ulM">
-                                <rect key="frame" x="20" y="150" width="280" height="30"/>
+                                <rect key="frame" x="20" y="124" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sex" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T4P-Ix-AgR">
-                                <rect key="frame" x="20" y="188" width="280" height="30"/>
+                                <rect key="frame" x="20" y="162" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Postal Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XzO-L9-vBO">
-                                <rect key="frame" x="20" y="302" width="280" height="30"/>
+                                <rect key="frame" x="20" y="276" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -138,14 +138,14 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="v2O-Jl-wHQ">
                                             <connections>
-                                                <action selector="saveToNode" destination="cN0-g3-1PJ" id="k8V-LK-ifE"/>
+                                                <segue destination="0A9-bM-WUG" kind="modal" id="icm-ic-iGZ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthdate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h7r-Pd-P5x">
-                                <rect key="frame" x="20" y="264" width="280" height="30"/>
+                                <rect key="frame" x="20" y="238" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -153,10 +153,17 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3fu-iz-fjy">
-                                <rect key="frame" x="20" y="226" width="280" height="30"/>
+                                <rect key="frame" x="20" y="200" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU7-X0-a5f">
+                                <rect key="frame" x="138" y="325" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveToNode" destination="cN0-g3-1PJ" eventType="touchUpInside" id="Od5-bm-geF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94768488220000002" green="0.94768488220000002" blue="0.94768488220000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -548,7 +555,7 @@
         <image name="well_ballIcon" width="190" height="283"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IFd-rQ-mrb"/>
+        <segue reference="icm-ic-iGZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.40222668684293156" green="0.78807975113122175" blue="0.47145898393781743" alpha="1" colorSpace="calibratedRGB"/>
 </document>
