@@ -179,6 +179,11 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         
     }
     
+    func setPersonUUID (uuid: String) {
+        self.person_uuid = uuid
+        print ("NEW UUID!!!!! ", self.person_uuid)
+    }
+    
     // Read property/configuration file for the credentials
     func readConfig () {
         

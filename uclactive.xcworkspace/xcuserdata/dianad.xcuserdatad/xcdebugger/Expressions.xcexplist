@@ -37,6 +37,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ProfileController.(sync(AnyObject) -&gt; ()).(closure #3):ProfileController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.ok">
+            </PersistentString>
+            <PersistentString
+               value = "self.todayActiveEnergy">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ProfileController.(sync(AnyObject) -&gt; ()).(closure #2):ProfileController.swift">
          <PersistentStrings>
             <PersistentString
