@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import FacebookLogin
 
 class FirstViewController: UIViewController {
     
@@ -20,7 +21,11 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                
-  
+        let loginButton = LoginButton(readPermissions: [ .PublicProfile ])
+        loginButton.center = view.center
+        
+        view.addSubview(loginButton)
+        
     }
    }
 
