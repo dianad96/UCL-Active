@@ -104,12 +104,12 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/RegisterController.swift"
-                  timestampString = "499358233.330668"
+                  timestampString = "498902308.551876"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "150"
                   endingLineNumber = "150"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "32">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -119,12 +119,12 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/RegisterController.swift"
-                  timestampString = "499358233.330762"
+                  timestampString = "498902308.552167"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "151"
                   endingLineNumber = "151"
-                  offsetFromSymbolStart = "22">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -152,12 +152,12 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/RegisterController.swift"
-                  timestampString = "499358233.331687"
+                  timestampString = "498902308.555669"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
-                  offsetFromSymbolStart = "27">
+                  offsetFromSymbolStart = "40">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -167,12 +167,12 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/RegisterController.swift"
-                  timestampString = "499358233.331784"
+                  timestampString = "498902308.555907"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "54"
                   endingLineNumber = "54"
-                  offsetFromSymbolStart = "43">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -232,12 +232,12 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/RegisterController.swift"
-                  timestampString = "499358233.334161"
+                  timestampString = "498902308.56057"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "66"
                   endingLineNumber = "66"
-                  offsetFromSymbolStart = "1907">
+                  offsetFromSymbolStart = "1624">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -247,12 +247,12 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/RegisterController.swift"
-                  timestampString = "499358233.334296"
+                  timestampString = "498902308.560683"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
                   endingLineNumber = "67"
-                  offsetFromSymbolStart = "198">
+                  offsetFromSymbolStart = "136">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -312,12 +312,12 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/ProfileController.swift"
-                  timestampString = "499358233.336795"
+                  timestampString = "498902308.563972"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1060"
                   endingLineNumber = "1060"
-                  offsetFromSymbolStart = "2814">
+                  offsetFromSymbolStart = "2276">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -327,12 +327,12 @@
                   moduleName = "uclactive"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dianad/Desktop/UCL-Active/uclactive/ProfileController.swift"
-                  timestampString = "499358233.336955"
+                  timestampString = "498902308.564096"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1061"
                   endingLineNumber = "1061"
-                  offsetFromSymbolStart = "22">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -399,20 +399,6 @@
             endingLineNumber = "913"
             landmarkName = "sendDatatoNode_Numerical(_:snomed_code:loinc_code:concept_name:concept_unit:date:concept_value:)"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uclactive/FirstViewController.swift"
-            timestampString = "499290269.780388"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5"
-            endingLineNumber = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

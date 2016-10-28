@@ -2,8 +2,31 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>BUNDLE_ID</key>
-	<string>cum.ucl.uclactive</string>
+    
+    
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb367232603620737</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>367232603620737</string>
+    <key>FacebookDisplayName</key>
+    <string>UCLActive</string>
+    
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
+    
+    
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -20,44 +43,8 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.281681209128-ubcjos2hvkp98hti37eta6vqkli417ag</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>CLIENT_ID</key>
-	<string>281681209128-ubcjos2hvkp98hti37eta6vqkli417a9.apps.googleusercontent.com</string>
-	<key>FacebookAppID</key>
-	<string>367232603620737</string>
-	<key>FacebookDisplayName</key>
-	<string>UCLActive</string>
-	<key>GOOGLE_APP_ID</key>
-	<string>1:281681209128:ios:fe4f9757ca257a76</string>
-	<key>IS_ADS_ENABLED</key>
-	<false/>
-	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
-	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
-	<key>IS_GCM_ENABLED</key>
-	<false/>
-	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>fbapi</string>
-		<string>fb-messenger-api</string>
-		<string>fbauth2</string>
-		<string>fbshareextension</string>
-	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -65,12 +52,6 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
-	<key>PROJECT_ID</key>
-	<string>firebase-uclactive</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.281681209128-ubcjos2hvkp98hti37eta6vqkli417a9</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

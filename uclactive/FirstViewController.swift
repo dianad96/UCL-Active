@@ -9,7 +9,6 @@
 import UIKit
 import HealthKit
 import FacebookLogin
-import FacebookCore
 
 class FirstViewController: UIViewController {
     
@@ -21,18 +20,11 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+               
         let loginButton = LoginButton(readPermissions: [ .PublicProfile ])
-        loginButton.center = CGPointMake(view.frame.width/2, 500)
+        loginButton.center = view.center
         
         view.addSubview(loginButton)
-        
-        if let accessToken = AccessToken.current {
-            print ("I'm logged in.")
-        } else {
-            print ("I'm logged out.")
-        }
         
     }
    }
