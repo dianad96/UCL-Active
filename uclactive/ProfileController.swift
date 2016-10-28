@@ -204,7 +204,7 @@ class ProfileController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
-    // Authenticating app with Apigee Health APIx
+    // Authorising app with Apigee Health APIx
     func authorizeApigee(completion: (Int) -> ()){
         // Send HTTP GET Request
     

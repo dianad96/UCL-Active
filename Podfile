@@ -8,4 +8,5 @@ pod 'SwiftyJSON'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
+pod 'Google/SignIn'
 end
