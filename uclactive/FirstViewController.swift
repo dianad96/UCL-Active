@@ -9,8 +9,9 @@
 import UIKit
 import HealthKit
 import FacebookLogin
+import Google
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     
     @IBOutlet weak var button: UIButton!
@@ -22,10 +23,30 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
                
         let loginButton = LoginButton(readPermissions: [ .PublicProfile ])
-        loginButton.center = CGPointMake(view.frame.width/2, 500)
+        loginButton.center = CGPointMake(view.frame.width/2, 450)
+        
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        
+        if configureError != nil {
+            print(configureError)
+        }
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        
+        let button = GIDSignInButton(frame: CGRectMake(0, 0, 180, 10))
+        button.center = CGPointMake(view.frame.width/2, 500)
         
         view.addSubview(loginButton)
+        view.addSubview(button)
         
     }
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+        print(user.profile.email)
+        print(user.profile.imageURLWithDimension(400))
+    }
+    
    }
 

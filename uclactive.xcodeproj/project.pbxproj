@@ -10,6 +10,9 @@
 		59C84713630541839A78E8F6 /* Pods_uclactive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3843DBEB6098F32B66B3EE8F /* Pods_uclactive.framework */; };
 		822B78751DC4A63700EEC549 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD72CC681D3AC6D70054A10B /* Info.plist */; };
 		827A942B1D645CF7002F1BEE /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A942A1D645CF7002F1BEE /* RegisterController.swift */; };
+		82E2BCEB1DC4AF2E007428BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82E2BCEA1DC4AF2E007428BE /* GoogleService-Info.plist */; };
+		82E2BCEC1DC4AF2E007428BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82E2BCEA1DC4AF2E007428BE /* GoogleService-Info.plist */; };
+		82E2BCED1DC4AF2E007428BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82E2BCEA1DC4AF2E007428BE /* GoogleService-Info.plist */; };
 		AD07BB401D3F69E60012850D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD07BB3F1D3F69E60012850D /* Assets.xcassets */; };
 		AD07BB461D3F77890012850D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB451D3F77890012850D /* ProfileController.swift */; };
 		AD07BB481D3FBEFC0012850D /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB471D3FBEFC0012850D /* AvatarImageView.swift */; };
@@ -51,6 +54,10 @@
 		3843DBEB6098F32B66B3EE8F /* Pods_uclactive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uclactive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4352758E6B74D6FAECD6D770 /* Pods-uclactive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uclactive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-uclactive/Pods-uclactive.debug.xcconfig"; sourceTree = "<group>"; };
 		827A942A1D645CF7002F1BEE /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		82E2BCEA1DC4AF2E007428BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		82E2BCEE1DC4B43F007428BE /* uclactive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uclactive-Bridging-Header.h"; sourceTree = "<group>"; };
+		82E2BCEF1DC4B43F007428BE /* uclactiveTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uclactiveTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		82E2BCF01DC4B43F007428BE /* uclactiveUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uclactiveUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		888FB559506EB61A667238C8 /* Pods-uclactive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uclactive.release.xcconfig"; path = "Pods/Target Support Files/Pods-uclactive/Pods-uclactive.release.xcconfig"; sourceTree = "<group>"; };
 		AD07BB3F1D3F69E60012850D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD07BB451D3F77890012850D /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -168,6 +175,7 @@
 		AD72CC4E1D3AC6D60054A10B = {
 			isa = PBXGroup;
 			children = (
+				82E2BCEA1DC4AF2E007428BE /* GoogleService-Info.plist */,
 				AD72CC8B1D3AC6E90054A10B /* HomeKit.framework */,
 				AD72CC591D3AC6D60054A10B /* uclactive */,
 				AD72CC701D3AC6D70054A10B /* uclactiveTests */,
@@ -175,6 +183,9 @@
 				AD72CC581D3AC6D60054A10B /* Products */,
 				653D3AE6CD8A36B5E23F27E0 /* Pods */,
 				40D8D7A4E71EA8C353870BED /* Frameworks */,
+				82E2BCEE1DC4B43F007428BE /* uclactive-Bridging-Header.h */,
+				82E2BCEF1DC4B43F007428BE /* uclactiveTests-Bridging-Header.h */,
+				82E2BCF01DC4B43F007428BE /* uclactiveUITests-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -354,6 +365,7 @@
 				AD07BB401D3F69E60012850D /* Assets.xcassets in Resources */,
 				ADF6AE391D4B47E40002BD37 /* Property List.plist in Resources */,
 				AD72CC621D3AC6D60054A10B /* Main.storyboard in Resources */,
+				82E2BCEB1DC4AF2E007428BE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82E2BCEC1DC4AF2E007428BE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +381,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82E2BCED1DC4AF2E007428BE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +597,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = uclactive/uclactive.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -595,7 +610,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cum.ucl.uclactive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "uclactive-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -605,6 +621,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = uclactive/uclactive.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -617,7 +634,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cum.ucl.uclactive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "uclactive-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -625,10 +642,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = uclactiveTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ucl.uclactiveTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "uclactiveTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/uclactive.app/uclactive";
 			};
 			name = Debug;
@@ -637,10 +657,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = uclactiveTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ucl.uclactiveTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "uclactiveTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/uclactive.app/uclactive";
 			};
 			name = Release;
@@ -648,10 +670,13 @@
 		AD72CC881D3AC6D70054A10B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = uclactiveUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ucl.uclactiveUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "uclactiveUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_TARGET_NAME = uclactive;
 			};
 			name = Debug;
@@ -659,10 +684,12 @@
 		AD72CC891D3AC6D70054A10B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = uclactiveUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ucl.uclactiveUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "uclactiveUITests-Bridging-Header.h";
 				TEST_TARGET_NAME = uclactive;
 			};
 			name = Release;
