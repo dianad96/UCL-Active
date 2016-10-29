@@ -45,7 +45,10 @@ use_frameworks!
 target 'uclactive' do
 pod 'Alamofire', '~> 3.4'
 pod 'SwiftyJSON'
-end
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare'
+pod 'Google/SignIn'end
 ```
 Then, run the following command:
 
