@@ -21,10 +21,12 @@ class FirstViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-               
-        let loginButton = LoginButton(readPermissions: [ .PublicProfile ])
-        loginButton.center = CGPointMake(view.frame.width/2, 450)
         
+        //Facebook Login
+        let facebookLogin = LoginButton(readPermissions: [ .PublicProfile ])
+        facebookLogin.center = CGPointMake(view.frame.width/2, 450)
+        
+        //Gmail Login
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         
@@ -35,17 +37,22 @@ class FirstViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
         
-        let button = GIDSignInButton(frame: CGRectMake(0, 0, 180, 10))
-        button.center = CGPointMake(view.frame.width/2, 500)
+        let gmailLogin = GIDSignInButton(frame: CGRectMake(0, 0, 180, 10))
+        gmailLogin.center = CGPointMake(view.frame.width/2, 500)
         
-        view.addSubview(loginButton)
-        view.addSubview(button)
+        view.addSubview(facebookLogin)
+        view.addSubview(gmailLogin)
         
     }
     
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("GMAIL INFO: ")
+        print(user.profile.givenName)
+        print(user.profile.familyName)
         print(user.profile.email)
         print(user.profile.imageURLWithDimension(400))
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     }
     
    }
