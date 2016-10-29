@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		59C84713630541839A78E8F6 /* Pods_uclactive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3843DBEB6098F32B66B3EE8F /* Pods_uclactive.framework */; };
+		822B78751DC4A63700EEC549 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD72CC681D3AC6D70054A10B /* Info.plist */; };
 		827A942B1D645CF7002F1BEE /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827A942A1D645CF7002F1BEE /* RegisterController.swift */; };
 		AD07BB401D3F69E60012850D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD07BB3F1D3F69E60012850D /* Assets.xcassets */; };
 		AD07BB461D3F77890012850D /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BB451D3F77890012850D /* ProfileController.swift */; };
@@ -348,6 +349,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				822B78751DC4A63700EEC549 /* Info.plist in Resources */,
 				AD72CC671D3AC6D70054A10B /* LaunchScreen.storyboard in Resources */,
 				AD07BB401D3F69E60012850D /* Assets.xcassets in Resources */,
 				ADF6AE391D4B47E40002BD37 /* Property List.plist in Resources */,

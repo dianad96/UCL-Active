@@ -22,7 +22,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
                
         let loginButton = LoginButton(readPermissions: [ .PublicProfile ])
-        loginButton.center = view.center
+        loginButton.center = CGPointMake(view.frame.width/2, 500)
         
         view.addSubview(loginButton)
         
